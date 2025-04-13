@@ -172,3 +172,16 @@ class EmployeeAttendance(models.Model):
 
     class Meta:
         db_table = 'EmployeeAttendance'
+
+class EmployeePayroll(models.Model):
+    employee_payroll_id = models.AutoField(primary_key=True)
+    employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    payment_date = models.DateField()
+    sales_omzet_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    salary_amount = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.employee_payroll_id
+
+    class Meta:
+        db_table = 'EmployeePayroll'
