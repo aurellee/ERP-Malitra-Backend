@@ -101,7 +101,6 @@ class Invoice(models.Model):
     invoice_id = models.AutoField(primary_key=True)
     invoice_date = models.DateField(auto_now_add=True)
     amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_status = models.CharField(max_length=255)
     payment_method = models.CharField(max_length=255)
     car_number = models.CharField(max_length=255)
     discount = models.DecimalField(max_digits=10, decimal_places=2)
