@@ -134,6 +134,7 @@ class DailySales(models.Model):
     date = models.DateField(auto_now_add=True)
     total_sales_omzet = models.DecimalField(max_digits=10, decimal_places=2)
     salary_status = models.CharField(max_length=255)
+    salary_paid = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
         return self.daily_sales_id
