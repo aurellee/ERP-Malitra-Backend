@@ -114,8 +114,8 @@ class Invoice(models.Model):
 
 class ItemInInvoice(models.Model):
     invoice_detail_id = models.AutoField(primary_key=True)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, related_name='items')
     discount_per_item = models.DecimalField(max_digits=10, decimal_places=2)
     quantity = models.IntegerField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
