@@ -87,7 +87,7 @@ class EkspedisiMasuk(models.Model):
 
 class Chatbot(models.Model):
     chatbot_id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     text = models.CharField(max_length=255)
 
