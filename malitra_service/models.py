@@ -143,7 +143,7 @@ class DailySales(models.Model):
 
 class EmployeeBenefits(models.Model):
     employee_bonus_id = models.AutoField(primary_key=True)
-    employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     date = models.DateField()
     bonus_type = models.CharField(max_length=255)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -158,11 +158,11 @@ class EmployeeBenefits(models.Model):
 
 class EmployeeAttendance(models.Model):
     employee_absence_id = models.AutoField(primary_key=True)
-    employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     date = models.DateField()
-    clock_in = models.TimeField()
-    clock_out = models.TimeField()
-    day_count = models.IntegerField()
+    clock_in = models.TimeField(null=True, blank=True)
+    clock_out = models.TimeField(null=True, blank=True)
+    day_count = models.DecimalField(max_digits=3, decimal_places=1, default=1.0)
     absence_status = models.CharField(max_length=255)
     notes = models.CharField(max_length=255)
 
@@ -174,11 +174,11 @@ class EmployeeAttendance(models.Model):
 
 class EmployeePayroll(models.Model):
     employee_payroll_id = models.AutoField(primary_key=True)
-    employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    payment_date = models.DateField()
-    sales_omzet_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    salary_amount = models.DecimalField(max_digits=10, decimal_places=2)
-
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    payment_date = models.DateTimeField()
+    sales_omzet_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    salary_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    
     def __str__(self):
         return self.employee_payroll_id
 
