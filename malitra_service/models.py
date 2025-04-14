@@ -128,12 +128,12 @@ class ItemInInvoice(models.Model):
 
 class DailySales(models.Model):
     daily_sales_id = models.AutoField(primary_key=True)
-    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
-    employee_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, related_name='sales')
+    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     total_sales_omzet = models.DecimalField(max_digits=10, decimal_places=2)
-    salary_status = models.CharField(max_length=255)
-    salary_paid = models.DecimalField(max_digits=10, decimal_places=2)
+    salary_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    salary_status = models.CharField(max_length=255, default="Unpaid")
 
     def __str__(self):
         return self.daily_sales_id
