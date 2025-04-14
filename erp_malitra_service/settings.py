@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'malitra_service',
     "rest_framework",
-    "corsheaders"
+    "corsheaders",
 ]
 
 MIDDLEWARE = [

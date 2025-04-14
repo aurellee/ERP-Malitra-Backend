@@ -96,7 +96,7 @@ class MonthlyEmployeeSalesView(APIView):
             }, status=500)
 
 class EmployeeSummaryView(APIView):
-    permission_classes = [AllowAny]a
+    permission_classes = [AllowAny]
 
     def get(self, request, *args, **kwargs):
         try:
