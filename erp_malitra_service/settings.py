@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'malitra_service',
     "rest_framework",
     "corsheaders",
+    "django_celery_beat",
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,17 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_ALL_CREDENTIALS = True
 
 AUTH_USER_MODEL = 'malitra_service.User'
+
+from celery.schedules import crontab
+
+CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_BEAT_SCHEDULE = {
+    'generate-daily-attendance-every-midnight': {
+        'task': 'malitra_service.tasks.generate_daily_attendance',
+        'schedule': crontab(hour=0, minute=0),
+    },
+}
+
+
+TIME_ZONE = 'Asia/Jakarta' 
+USE_TZ = True  
