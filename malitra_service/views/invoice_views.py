@@ -6,6 +6,7 @@ from malitra_service.models import Invoice, ItemInInvoice, DailySales, Employee
 from rest_framework.response import Response
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from datetime import datetime
+from decimal import Decimal
 
 # Create your views here.
 class InvoiceListView(APIView):
@@ -17,19 +18,23 @@ class InvoiceListView(APIView):
             result = []
 
             for invoice in invoices:
-                items = ItemInInvoice.objects.filter(invoice_id=invoice)
+                items = ItemInInvoice.objects.filter(invoice=invoice)
+                
+                print(f"Invoice {invoice.invoice_id} has {items.count()} items")
 
-                total_price = sum((item.price - item.discount) * item.quantity for item in items)
+                for item in items:
+                    print(f"  - Product: {item.product.product_name}, Price: {item.price}, Discount/item: {item.discount_per_item}, Qty: {item.quantity}")
 
-                unpaid_amount = total_price - float(invoice.amount_paid)
+                total_price = sum((item.price - item.discount_per_item) * item.quantity for item in items) - invoice.discount
+
+                unpaid_amount = total_price - Decimal(invoice.amount_paid)
 
                 invoice_data = {
                     'invoice_id': invoice.invoice_id,
                     'invoice_date': invoice.invoice_date,
                     'total_price': total_price,
                     'amount_paid': float(invoice.amount_paid),
-                    'unpaid_amount': unpaid_amount,
-                    'payment_status': invoice.payment_status,
+                    'unpaid_amount': float(unpaid_amount),
                     'payment_method': invoice.payment_method,
                     'car_number': invoice.car_number,
                     'discount': float(invoice.discount),
@@ -67,7 +72,7 @@ class InvoiceSummaryFilter(APIView):
             for invoice in invoices:
                 items = ItemInInvoice.objects.filter(invoice_id=invoice)
                 total_price = sum((item.price - item.discount_per_item) * item.quantity for item in items)
-                unpaid = total_price - float(invoice.amount_paid)
+                unpaid = total_price - Decimal(invoice.amount_paid)
                 total_unpaid += unpaid if unpaid > 0 else 0
 
             return Response({
@@ -99,6 +104,30 @@ class InvoiceUpdate(generics.UpdateAPIView):
             return Invoice.objects.get(invoice_id=invoice_id)
         except Invoice.DoesNotExist:
             raise serializers.ValidationError({"status": 404, "error": {"invoice_id": "Invoice not found."}})
+    
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)  # ✅ partial update
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
+    
+    def perform_update(self, serializer):
+        instance = serializer.save()
+
+        # Hitung total harga produk setelah diskon
+        items = ItemInInvoice.objects.filter(invoice_id=instance)
+        total = sum(
+            (item.price - item.discount_per_item) * item.quantity
+            for item in items
+        )
+
+        if instance.amount_paid >= total:
+            instance.invoice_status = "Full Payment"
+            instance.save()
+
+        # Update daily sales omzet
+        DailySales.objects.filter(invoice_id=instance).update(total_sales_omzet=instance.amount_paid)
 
 class InvoiceDelete(APIView):
     permission_classes = [AllowAny]
@@ -117,6 +146,7 @@ class InvoiceDelete(APIView):
             return Response({"status": 404, "error": "Invoice not found."}, status=404)
 
 class InvoiceCreate(APIView):
+    permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
         serializer = InvoiceSerializer(data=request.data)
         
@@ -134,11 +164,11 @@ class PendingInvoiceListView(APIView):
             result = []
 
             for invoice in pending_invoices:
-                daily_sales = DailySales.objects.filter(invoice_id=invoice).select_related('employee_id')
+                daily_sales = DailySales.objects.filter(invoice_id=invoice).select_related('employee')
 
                 employee_info_list = []
                 for ds in daily_sales:
-                    employee = ds.employee_id
+                    employee = ds.employee
                     employee_info_list.append({
                         'employee_id': employee.employee_id,
                         'employee_name': employee.employee_name,
@@ -162,6 +192,7 @@ class PendingInvoiceListView(APIView):
             return Response({"status": 500, "error": str(e)}, status=500)
 
 class InvoiceDetailView(APIView):
+    permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
         invoice_id = request.data.get('invoice_id')
 
@@ -173,17 +204,17 @@ class InvoiceDetailView(APIView):
 
             items = ItemInInvoice.objects.filter(invoice_id=invoice)
             item_list = [{
-                'product_id': item.product_id.product_id,
+                'product_id': item.product_id,
                 'discount_per_item': float(item.discount_per_item),
                 'quantity': item.quantity,
                 'price': float(item.price)
             } for item in items]
 
-            sales = DailySales.objects.filter(invoice_id=invoice).select_related('employee_id')
+            sales = DailySales.objects.filter(invoice_id=invoice).select_related('employee')
             sales_list = [{
-                'employee_id': sale.employee_id.employee_id,
-                'employee_name': sale.employee_id.employee_name,
-                'role': sale.employee_id.role,
+                'employee_id': sale.employee.employee_id,
+                'employee_name': sale.employee.employee_name,
+                'role': sale.employee.role,
             } for sale in sales]
 
             return Response({
@@ -192,7 +223,6 @@ class InvoiceDetailView(APIView):
                     'invoice_id': invoice.invoice_id,
                     'invoice_date': invoice.invoice_date,
                     'amount_paid': float(invoice.amount_paid),
-                    'payment_status': invoice.payment_status,
                     'payment_method': invoice.payment_method,
                     'car_number': invoice.car_number,
                     'discount': float(invoice.discount),
