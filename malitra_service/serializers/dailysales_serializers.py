@@ -4,4 +4,5 @@ from rest_framework import serializers
 class DailySalesSerializer(serializers.ModelSerializer):
     class Meta:
         model = DailySales
-        fields = ['employee_id', 'total_sales_omzer', 'salary_status']
+        fields = ['employee', 'total_sales_omzet', 'salary_status']
+        read_only_fields = ['salary_status']
