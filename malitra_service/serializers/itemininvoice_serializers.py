@@ -4,4 +4,4 @@ from rest_framework import serializers
 class ItemInInvoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemInInvoice
-        fields = ['product_id', 'discount_per_item', 'quantity', 'price']
+        fields = ['product', 'discount_per_item', 'quantity', 'price']
