@@ -171,7 +171,7 @@ class EmployeeAttendance(models.Model):
 
     class Meta:
         db_table = 'EmployeeAttendance'
-
+        
 class EmployeePayroll(models.Model):
     employee_payroll_id = models.AutoField(primary_key=True)
     employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
