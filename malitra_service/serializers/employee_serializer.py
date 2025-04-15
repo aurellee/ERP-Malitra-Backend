@@ -1,7 +1,7 @@
-from rest_framework import serializer
+from rest_framework import serializers
 from malitra_service.models import Employee
 
-class EmployeeSerializer(serializer.ModelSerializer):
+class EmployeeSerializer(serializers.ModelSerializer):
     def validate_employee_id(self, value):
         if self.instance is None and Employee.objects.filter(employee_id=value).exists():
             raise serializers.ValidationError("Employee ID already exists.")
