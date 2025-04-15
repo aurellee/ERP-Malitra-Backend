@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from malitra_service.serializers.ekspedisi_masuk_serializers import EkspedisiMasukSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from malitra_service.models import EkspedisiMasuk
+from malitra_service.models import EkspedisiMasuk, Product
 from rest_framework.response import Response
 from rest_framework import serializers
 
@@ -29,7 +29,13 @@ class EkspedisiMasukCreate(generics.ListCreateAPIView):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             ekspedisi = serializer.save()
-            product = ekspedisi.product_id
+            try:
+                product = Product.objects.get(product_id=ekspedisi.product.product_id)  # product_id untuk objek Product
+            except Product.DoesNotExist:
+                return Response({
+                    "status": 400,
+                    "error": "Product not found"
+                }, status=400)
 
             if ekspedisi.in_or_out:
                 product.product_quantity += ekspedisi.quantity
