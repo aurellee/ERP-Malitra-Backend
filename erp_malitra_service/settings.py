@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'erp_malitra_service.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',                      
+        'NAME': 'erpmalitra',                      
         'USER': 'postgres',
         'PASSWORD': '250524',
         'HOST': 'localhost',
