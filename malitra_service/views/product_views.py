@@ -61,7 +61,7 @@ class ProductUpdate(generics.UpdateAPIView):
 class ProductExist(APIView):
     permission_classes = [AllowAny]
 
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         product_id = request.data.get('product_id')
 
         if not product_id:

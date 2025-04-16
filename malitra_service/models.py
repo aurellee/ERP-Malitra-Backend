@@ -4,15 +4,15 @@ from datetime import date
 
 # Create your models here.
 class Product(models.Model):
-    sparePartsMobil = 'SPML'
-    sparePartsMotor = 'SPMR'
+    sparePartsMobil = 'SpareParts Mobil'
+    sparePartsMotor = 'SpareParts Motor'
     oli = 'Oli'
     ban = 'Ban'
     aki = 'Aki'
     campuran = 'Campuran'
     PRODUCT_CATEGORY = (
-        (sparePartsMobil, 'Spare Parts Mobil'),
-        (sparePartsMotor, 'Spare Parts Motor'),
+        (sparePartsMobil, 'SpareParts Mobil'),
+        (sparePartsMotor, 'SpareParts Motor'),
         (oli, 'Oli'),
         (ban, 'Ban'),
         (aki, 'Aki'),
@@ -77,7 +77,6 @@ class EkspedisiMasuk(models.Model):
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
     sale_price = models.DecimalField(max_digits=10, decimal_places=2)
     in_or_out = models.IntegerField()
-    keterangan = models.CharField(max_length=255)
 
     def __str__(self):
         return self.ekspedisi_id

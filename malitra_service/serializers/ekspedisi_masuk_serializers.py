@@ -9,4 +9,4 @@ class EkspedisiMasukSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = EkspedisiMasuk
-        fields = ['ekspedisi_id', 'product', 'date', 'quantity', 'purchase_price', 'sale_price', 'in_or_out', 'keterangan']
+        fields = ['ekspedisi_id', 'product', 'date', 'quantity', 'purchase_price', 'sale_price', 'in_or_out']

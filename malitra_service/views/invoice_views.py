@@ -2,7 +2,7 @@ from rest_framework import generics, status
 from rest_framework.views import APIView
 from malitra_service.serializers.invoice_serializers import InvoiceSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from malitra_service.models import Invoice, ItemInInvoice, DailySales, Employee
+from malitra_service.models import Invoice, ItemInInvoice, DailySales, Employee, Product
 from rest_framework.response import Response
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from datetime import datetime
@@ -109,25 +109,100 @@ class InvoiceUpdate(generics.UpdateAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)  # ✅ partial update
         serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
+        self.perform_update(serializer, request.data)  # Pass the request data to the custom update logic
+        
         return Response(serializer.data)
     
-    def perform_update(self, serializer):
+    def perform_update(self, serializer, request_data):
         instance = serializer.save()
 
+        # Update 'amount_paid'
+        new_amount_paid = request_data.get('amount_paid', instance.amount_paid)
+        instance.amount_paid = new_amount_paid
+        
+        # Update items if provided in the request
+        items_data = request_data.get('items', [])
+        if items_data:
+            self.update_items(instance, items_data)
+        
+        # Calculate total price after discount for the new items and update the invoice status
+        self.calculate_total_and_update_status(instance)
+
+        # Update daily sales omzet
+        DailySales.objects.filter(invoice_id=instance).update(total_sales_omzet=instance.amount_paid)
+
+    def update_items(self, invoice_instance, items_data):
+        total_price = 0
+        # Dapatkan daftar item yang sudah ada
+        existing_items = {item.product.product_id: item for item in ItemInInvoice.objects.filter(invoice_id=invoice_instance)}
+        
+        for item in items_data:
+            try:
+                product = Product.objects.get(product_id=item.get('product'))  # Ganti dengan metode pencarian sesuai dengan format data
+            except Product.DoesNotExist:
+                raise serializers.ValidationError({
+                    "error": f"Produk dengan ID '{item.get('product')}' tidak ditemukan."
+                })
+            quantity = item.get('quantity')
+            price = Decimal(item.get('price'))
+            discount_per_item = Decimal(item.get('discount_per_item'))
+
+            # Jika produk sudah ada di invoice, update quantity
+            if product.product_id in existing_items:
+                existing_item = existing_items[product.product_id]
+                old_quantity = existing_item.quantity
+                quantity_difference = quantity - old_quantity
+                
+                # Update stok produk berdasarkan perbedaan quantity
+                product.product_quantity -= quantity_difference
+                product.save()
+
+                # Update item di invoice
+                existing_item.quantity = quantity
+                existing_item.price = price
+                existing_item.discount_per_item = discount_per_item
+                existing_item.save()
+            else:
+                # Jika produk baru ditambahkan, kurangi stok produk
+                if product.product_quantity < quantity:
+                    raise serializers.ValidationError({
+                        "error": f"Stok produk '{product.product_name}' tidak cukup (tersisa {product.product_quantity})"
+                    })
+                
+                product.product_quantity -= quantity
+                product.save()
+
+                # Tambahkan item baru ke invoice
+                ItemInInvoice.objects.create(
+                    invoice=invoice_instance,
+                    product=product,
+                    quantity=quantity,
+                    price=price,
+                    discount_per_item=discount_per_item
+                )
+
+            # Hitung subtotal harga item setelah diskon
+            total_price += (price - discount_per_item) * quantity
+
+        # Update total price setelah diskon
+        discount = invoice_instance.discount
+        invoice_instance.save()
+
+    def calculate_total_and_update_status(self, invoice_instance):
         # Hitung total harga produk setelah diskon
-        items = ItemInInvoice.objects.filter(invoice_id=instance)
+        items = ItemInInvoice.objects.filter(invoice_id=invoice_instance)
         total = sum(
             (item.price - item.discount_per_item) * item.quantity
             for item in items
         )
 
-        if instance.amount_paid >= total:
-            instance.invoice_status = "Full Payment"
-            instance.save()
+        # Cek apakah amount_paid sudah mencukupi untuk full payment
+        if invoice_instance.amount_paid >= total:
+            invoice_instance.invoice_status = "Full Payment"
+        else:
+            invoice_instance.invoice_status = "Partial Payment" if invoice_instance.amount_paid > 0 else "Pending"
 
-        # Update daily sales omzet
-        DailySales.objects.filter(invoice_id=instance).update(total_sales_omzet=instance.amount_paid)
+        invoice_instance.save()
 
 class InvoiceDelete(APIView):
     permission_classes = [AllowAny]
