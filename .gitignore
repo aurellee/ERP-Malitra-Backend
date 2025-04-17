@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+
+# VSCode settings
+.vscode/
+
+# Pytest cache
+.pytest_cache/
+
+# MyPy, Coverage, Pyre
+.mypy_cache/
+.coverage
+.pyre/
+
+# Django migrations (optional)
+**/migrations/*.pyc
+
+# Logs and local config
+*.log
+*.sqlite3
+.env
+.env.*
+
+# macOS
+.DS_Store
