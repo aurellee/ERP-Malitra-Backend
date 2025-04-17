@@ -224,7 +224,11 @@ class InvoiceCreate(APIView):
     permission_classes = [AllowAny]
     def post(self, request, *args, **kwargs):
         serializer = InvoiceSerializer(data=request.data)
-        
+        print(request.data)
+        # update inventory table based on invoice product id
+        # product_in_inventory = Product.objects.get(product_id='Pending')
+        # product_in_inventory.product_quantity = product_in_inventory.product_quantity - 1
+        # product_in_inventory.save()
         if serializer.is_valid():
             invoice = serializer.save()
             return Response({"status": 201, "data": InvoiceSerializer(invoice).data}, status=201)
