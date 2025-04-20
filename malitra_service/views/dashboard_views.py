@@ -47,11 +47,16 @@ class DashboardOverviewView(APIView):
         sales_count = Employee.objects.filter(role__iexact="Sales").count()
         mechanic_count = Employee.objects.filter(role__iexact="Mechanics").count()
 
-        return Response({
+        data = {
             "total_transaction_today": total_transaction,
             "low_stock_count": low_stock_count,
             "out_of_stock_count": out_of_stock_count,
             "monthly_sales_by_category": category_data,
             "sales_employee_count": sales_count,
             "mechanic_employee_count": mechanic_count,
-        })
+        }
+
+        return Response({
+            "status": 200,
+            "data": data
+        }, status=200)
