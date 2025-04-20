@@ -32,7 +32,7 @@ class EmployeeAttendanceListView(APIView):
                 clock_out = ea.clock_out
                 day_status = '-'
 
-                if ea.absence_status in ['Absent', 'On Leave']:
+                if ea.absence_status in ['Absent', 'On Leave', 'On Sick']:
                     # Kosongkan clock-in & clock-out
                     clock_in = '-'
                     clock_out = '-'
