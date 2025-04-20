@@ -62,12 +62,16 @@ class EmployeeBenefitsSummaryView(APIView):
                 unpaid=Sum('amount')
             )['unpaid'] or 0.0
 
-            return Response({
-                "status": 200,
+            data = {
                 "selected_date": selected_date.strftime('%Y-%m-%d'),
                 "total_salaries": round(total_salaries, 2),
                 "total_paid": round(total_paid, 2),
                 "total_unpaid": round(total_unpaid, 2)
+            }
+            
+            return Response({
+                "status": 200,
+                "data": data
             }, status=200)
 
         except Exception as e:
