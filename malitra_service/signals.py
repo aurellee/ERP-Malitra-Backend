@@ -16,10 +16,10 @@ def setup_daily_attendance_task(sender, **kwargs):
             args=json.dumps([]),
         )
 
-    minute_schedule, _ = CrontabSchedule.objects.get_or_create(minute="*", hour="*", day_of_week="*", day_of_month="*", month_of_year="*")
+    hour_schedule, _ = CrontabSchedule.objects.get_or_create(minute="0", hour="*", day_of_week="*", day_of_month="*", month_of_year="*")
     if not PeriodicTask.objects.filter(name="Check and Generate Missing Attendance").exists():
         PeriodicTask.objects.create(
-            crontab=minute_schedule,
+            crontab=hour_schedule,
             name="Check and Generate Missing Attendance",
             task="malitra_service.tasks.check_and_generate_missing_attendance",
             args=json.dumps([]),
