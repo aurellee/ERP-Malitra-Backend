@@ -37,38 +37,49 @@ class EmployeeBenefitsSummaryView(APIView):
 
     def post(self, request, *args, **kwargs):
         try:
-            # Ambil tanggal dari request, jika tidak ada, pakai hari ini
-            date_str = request.data.get('date')
-            if date_str:
-                try:
-                    selected_date = datetime.strptime(date_str, '%Y-%m-%d').date()
-                except ValueError:
-                    return Response({"status": 400, "error": "Format tanggal harus YYYY-MM-DD."}, status=400)
+            start_date_str = request.data.get('start_date')
+            end_date_str = request.data.get('end_date')
+
+            today = timezone.localtime(timezone.now()).date()
+
+            # Jika tidak dikirim, gunakan tanggal hari ini
+            if not start_date_str:
+                start_date = today
             else:
-                selected_date = timezone.localtime(timezone.now()).date()
+                try:
+                    start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
+                except ValueError:
+                    return Response({
+                        "status": 400,
+                        "error": "Format start_date harus YYYY-MM-DD."
+                    }, status=400)
 
-            # Filter berdasarkan tanggal
-            benefits = EmployeeBenefits.objects.filter(date=selected_date)
+            if not end_date_str:
+                end_date = today
+            else:
+                try:
+                    end_date = datetime.strptime(end_date_str, '%Y-%m-%d').date()
+                except ValueError:
+                    return Response({
+                        "status": 400,
+                        "error": "Format end_date harus YYYY-MM-DD."
+                    }, status=400)
 
-            total_salaries = benefits.aggregate(
-                total=Sum('amount')
-            )['total'] or 0.0
+            # Filter EmployeeBenefits berdasarkan rentang tanggal
+            benefits = EmployeeBenefits.objects.filter(date__range=(start_date, end_date))
 
-            total_paid = benefits.filter(status="Paid").aggregate(
-                paid=Sum('amount')
-            )['paid'] or 0.0
-
-            total_unpaid = benefits.exclude(status="Paid").aggregate(
-                unpaid=Sum('amount')
-            )['unpaid'] or 0.0
+            total_salaries = benefits.aggregate(total=Sum('amount'))['total'] or 0.0
+            total_paid = benefits.filter(status="Paid").aggregate(paid=Sum('amount'))['paid'] or 0.0
+            total_unpaid = benefits.exclude(status="Paid").aggregate(unpaid=Sum('amount'))['unpaid'] or 0.0
 
             data = {
-                "selected_date": selected_date.strftime('%Y-%m-%d'),
+                "start_date": start_date.strftime('%Y-%m-%d'),
+                "end_date": end_date.strftime('%Y-%m-%d'),
                 "total_salaries": round(total_salaries, 2),
                 "total_paid": round(total_paid, 2),
                 "total_unpaid": round(total_unpaid, 2)
             }
-            
+
             return Response({
                 "status": 200,
                 "data": data
