@@ -22,3 +22,25 @@ def generate_daily_attendance():
                 absence_status='Present',
                 notes='-'
             )
+
+@shared_task
+def check_and_generate_missing_attendance():
+    today = date.today()
+    default_clock_in = time(9, 0)
+    default_clock_out = time(17, 0)
+
+    employees = Employee.objects.all()
+
+    for employee in employees:
+        # Cek apakah attendance sudah ada untuk hari ini
+        if not EmployeeAttendance.objects.filter(employee=employee, date=today).exists():
+            # Buatkan attendance jika belum ada
+            EmployeeAttendance.objects.create(
+                employee=employee,
+                date=today,
+                clock_in=default_clock_in,
+                clock_out=default_clock_out,
+                day_count=1,
+                absence_status='Present',
+                notes='-'
+            )
