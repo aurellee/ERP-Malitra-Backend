@@ -26,12 +26,30 @@ class InvoiceListView(APIView):
                     print(f"  - Product: {item.product.product_name}, Price: {item.price}, Discount/item: {item.discount_per_item}, Qty: {item.quantity}")
 
                 total_price = sum((item.price - item.discount_per_item) * item.quantity for item in items) - invoice.discount
-
                 unpaid_amount = total_price - Decimal(invoice.amount_paid)
+                
+                related_daily_sales = DailySales.objects.filter(invoice=invoice).select_related('employee')
+
+                sales = None
+                mechanic = None
+                
+                for ds in related_daily_sales:
+                    role = ds.employee.role
+                    name = ds.employee.employee_name
+                    
+                    if role == "Sales" and sales is None:
+                        sales = name
+                    elif role == "Mechanic" and mechanic is None:
+                        mechanic = name
+                    
+                    if sales and mechanic:
+                        break
 
                 invoice_data = {
                     'invoice_id': invoice.invoice_id,
                     'invoice_date': invoice.invoice_date,
+                    'sales': sales,
+                    'mechanic': mechanic,
                     'total_price': total_price,
                     'amount_paid': float(invoice.amount_paid),
                     'unpaid_amount': float(unpaid_amount),

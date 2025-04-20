@@ -162,6 +162,10 @@ CELERY_BEAT_SCHEDULE = {
         'task': 'malitra_service.tasks.generate_daily_attendance',
         'schedule': crontab(hour=0, minute=0),
     },
+    'check-and-generate-missing-attendance-every-minute': {
+        'task': 'malitra_service.tasks.check_and_generate_missing_attendance',
+        'schedule': crontab(minute='*', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'),
+    },
 }
 
 
