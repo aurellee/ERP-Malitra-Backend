@@ -158,3 +158,64 @@ class EmployeeBenefitsUpdate(generics.UpdateAPIView):
             "status": 400,
             "errors": serializer.errors
         }, status=400)
+        
+class EmployeeBenefitsPayAll(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        employee_id = request.data.get('employee')
+
+        if not employee_id:
+            return Response({
+                "status": 400,
+                "error": "Field 'employee' is required."
+            }, status=400)
+
+        try:
+            # Validasi employee ID
+            try:
+                employee = Employee.objects.get(employee_id=employee_id)
+            except Employee.DoesNotExist:
+                return Response({
+                    "status": 404,
+                    "error": "Employee not found."
+                }, status=404)
+
+            # Query benefits yang belum dibayar
+            unpaid_benefits = EmployeeBenefits.objects.filter(
+                employee=employee,
+                status="Unpaid"
+            )
+
+            updated_count = unpaid_benefits.update(status="Paid")
+
+            updated_benefits = EmployeeBenefits.objects.filter(
+                employee=employee,
+                status="Paid"
+            )
+
+            data = [
+                {
+                    "employee_bonus_id": eb.employee_bonus_id,
+                    "date": eb.date,
+                    "employee_id": eb.employee.employee_id,
+                    "employee_name": eb.employee.employee_name,
+                    "type": eb.bonus_type,
+                    "amount": float(eb.amount),
+                    "status": eb.status,
+                    "notes": eb.notes,
+                }
+                for eb in updated_benefits
+            ]
+
+            return Response({
+                "status": 200,
+                "updated_count": updated_count,
+                "data": data
+            }, status=200)
+
+        except Exception as e:
+            return Response({
+                "status": 500,
+                "error": str(e)
+            }, status=500)
