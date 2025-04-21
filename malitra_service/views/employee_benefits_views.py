@@ -19,6 +19,7 @@ class EmployeeBenefitsListView(APIView):
             
             for eb in employee_benefits:
                 data.append({
+                    "employee_bonus_id": eb.employee_bonus_id,
                     "date": eb.date,
                     "employee_id": eb.employee.employee_id,
                     "employee_name": eb.employee.employee_name,
