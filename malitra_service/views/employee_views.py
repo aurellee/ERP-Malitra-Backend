@@ -119,3 +119,27 @@ class MonthlyEmployeeSalesView(APIView):
                 "status": 500,
                 "error": str(e)
             }, status=500)
+            
+class GetEmployeeNameView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        employee_id = request.data.get('employee_id')
+
+        if not employee_id:
+            return Response({
+                "status": 400,
+                "error": {"employee_id": "This field is required."}
+            }, status=400)
+
+        try:
+            employee = Employee.objects.get(employee_id=employee_id)
+            return Response({
+                "status": 200,
+                "data": {"employee_name": employee.employee_name}
+            }, status=200)
+        except Employee.DoesNotExist:
+            return Response({
+                "status": 404,
+                "error": {"employee_id": "Employee not found."}
+            }, status=404)
