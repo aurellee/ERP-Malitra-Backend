@@ -24,6 +24,7 @@ urlpatterns = [
     path("employees/benefits/delete/", EmployeeBenefitsDelete.as_view(), name="delete-benefits-employee"),
     path("employees/benefits/update/", EmployeeBenefitsUpdate.as_view(), name="update-benefits-employee"),
     path('employees/benefits/summaryView/', EmployeeBenefitsSummaryView.as_view(), name='employee-benefits-summary'),
+    path('employees/benefits/payAll/', EmployeeBenefitsPayAll.as_view(), name='employee-benefits-pay-all'),
 
     # Employee Payroll
     path("employees/payroll/", EmployeePayrollListView.as_view(), name="employee-payroll-list"),

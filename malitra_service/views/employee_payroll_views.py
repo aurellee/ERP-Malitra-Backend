@@ -18,6 +18,7 @@ class EmployeePayrollListView(APIView):
             
             for ep in employee_payrolls:
                 data.append({
+                    "employee_payroll_id": ep.employee_payroll_id,
                     "payment_date": ep.payment_date,
                     "employee_id": ep.employee.employee_id,
                     "employee_name": ep.employee.employee_name,
