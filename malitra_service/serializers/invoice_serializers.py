@@ -47,7 +47,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
         total_due = total_price - invoice.discount
         invoice.invoice_status = (
             "Full Payment" if invoice.amount_paid >= total_due
-            else "Partial Payment" if invoice.amount_paid > 0
+            else "Partially Paid" if invoice.amount_paid > 0
             else "Pending"
         )
         invoice.save()
@@ -76,8 +76,8 @@ class InvoiceSerializer(serializers.ModelSerializer):
             ds = DailySales.objects.create(invoice=invoice, **sale)
             # dummy logic; adjust as needed
             ds.total_sales_omzet = invoice.amount_paid if invoice.invoice_status!='pending' else 0
-            ds.amount_paid = ds.total_sales_omzet * Decimal('0.5') if invoice.invoice_status!='pending' else 0
-            ds.salary_status = "Paid" if ds.amount_paid>0 else "Unpaid"
+            amount_paid = ds.total_sales_omzet * Decimal('0.1') if invoice.invoice_status!='pending' else 0
+            ds.salary_status = "Paid" if ds.salary_paid == amount_paid else "Unpaid"
             ds.save()
 
         # Finalize status
@@ -117,12 +117,23 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
         # 3) Replace sales if provided
         if sales_data is not None:
-            DailySales.objects.filter(invoice=instance).delete()
             for sale in sales_data:
-                ds = DailySales.objects.create(invoice=instance, **sale)
-                ds.total_sales_omzet = instance.amount_paid if instance.invoice_status!='pending' else 0
-                ds.amount_paid = ds.total_sales_omzet * Decimal('0.5') if instance.invoice_status!='pending' else 0
-                ds.salary_status = "Paid" if ds.amount_paid>0 else "Unpaid"
+                # find the existing row (assumes one per employee/invoice)
+                ds = DailySales.objects.get(
+                    invoice=instance,
+                    employee_id=sale['employee']
+                )
+
+                # 1) overwrite the omzet
+                ds.total_sales_omzet = Decimal(sale['total_sales_omzet'])
+
+                # 2) recompute expected & remaining
+                expected   = (ds.total_sales_omzet * Decimal("0.10")) \
+                                 .quantize(Decimal("0.01"))
+                paid_old   = ds.salary_paid or Decimal("0")
+                remaining  = expected - paid_old
+
+                ds.salary_status = "Fully Paid" if ds.salary_paid >= expected else "Unpaid"
                 ds.save()
 
         # 4) Recalc invoice status & totals
