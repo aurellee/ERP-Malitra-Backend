@@ -1,37 +1,38 @@
+import json
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-from langchain_community.document_loaders import TextLoader
-from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings  # Updated import
+
+from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-import openai
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import OpenAIEmbeddings
 
-# Load environment variables from .env file
+# Load environment variables and verify API key
 load_dotenv()
-
-# Get OpenAI API Key from environment variables
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-# Ensure the API key is available
 if not OPENAI_API_KEY:
-    raise ValueError("OPENAI_API_KEY not found. Please set it in your .env file.")
+    raise ValueError("Set OPENAI_API_KEY in your .env")
 
-# Set OpenAI API key to use for embeddings
-openai.api_key = OPENAI_API_KEY
+# 1) Read the entire JSON export
+base_path = Path(__file__).parent
+json_path = base_path / "data_export.json"
+with open(json_path, "r", encoding="utf-8") as f:
+    data = json.load(f)
 
-# Load and split documents
-loader = TextLoader("data_export.txt")
-documents = loader.load()
+# 2) Convert JSON data to a single Document
+#    (you could split per key if desired)
+raw_content = json.dumps(data, indent=2)
+docs = [Document(page_content=raw_content, metadata={"source": str(json_path)})]
 
+# 3) Split into manageable text chunks
 splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
-texts = splitter.split_documents(documents)
+texts = splitter.split_documents(docs)
 
-# Create embeddings using OpenAI
-embedding = OpenAIEmbeddings()
-
-# Create and persist the vector store
-vectorstore = Chroma.from_documents(texts, embedding, persist_directory="./db")
+# 4) Embed & persist vector store
+emb = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+db_dir = base_path / "db"
+vectorstore = Chroma.from_documents(texts, emb, persist_directory=str(db_dir))
 vectorstore.persist()
 
-print("Documents have been successfully processed and stored!")
+print("✅ index rebuilt at", db_dir)

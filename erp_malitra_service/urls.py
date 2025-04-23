@@ -32,4 +32,5 @@ urlpatterns = [
     path("", include("malitra_service.urls.employee_urls")),
     path("", include("malitra_service.urls.invoice_urls")),
     path("", include("malitra_service.urls.product_urls")),
+    path("", include("malitra_service.urls.chat_urls")),
 ]

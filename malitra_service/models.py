@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 from datetime import date
+from django.utils import timezone
 
 # Create your models here.
 class Product(models.Model):
@@ -87,7 +88,7 @@ class EkspedisiMasuk(models.Model):
 class Chatbot(models.Model):
     chatbot_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True, db_index=True, null=True)
     question = models.TextField(default="")
     answer = models.TextField(default="")
 
