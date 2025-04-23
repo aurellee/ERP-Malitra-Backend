@@ -14,23 +14,23 @@ from rest_framework.generics import ListAPIView
 
 User = get_user_model()
 
-# one-time LLM setup for translation and spell correction
+# # one-time LLM setup for translation and spell correction
 llm_for_prep = ChatOpenAI(
     model_name="gpt-3.5-turbo",
     temperature=0,
     openai_api_key=os.getenv("OPENAI_API_KEY")
 )
-# Translator: Bahasa Indonesia -> English
-translate_prompt = PromptTemplate.from_template(
-    """
-Translate this question into English, preserving the original meaning:
+# # Translator: Bahasa Indonesia -> English
+# translate_prompt = PromptTemplate.from_template(
+#     """
+# Translate this question into English, preserving the original meaning:
 
-{question}
+# {question}
 
-English:
-"""
-)
-translator = LLMChain(llm=llm_for_prep, prompt=translate_prompt)
+# English:
+# """
+# )
+# translator = LLMChain(llm=llm_for_prep, prompt=translate_prompt)
 
 # Spell-corrector for English question
 spell_fix_prompt = PromptTemplate.from_template(
@@ -55,11 +55,8 @@ class ChatView(APIView):
         user_id     = serializer.validated_data["user_id"]
         raw_question = serializer.validated_data["question"].strip()
 
-        # 1) Translate to English
-        eng_question = translator.run(raw_question)
-
         # 2) Spell-correct the English question
-        fixed_question = corrector.run(eng_question)
+        fixed_question = corrector.run(raw_question)
 
         # 3) Load JSON-based index
         emb     = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
@@ -70,7 +67,7 @@ class ChatView(APIView):
 
         # 5) Map-reduce QA
         llm = ChatOpenAI(
-            model_name="gpt-3.5-turbo",
+            model_name="gpt-4.1",
             temperature=0,
             openai_api_key=os.getenv("OPENAI_API_KEY")
         )

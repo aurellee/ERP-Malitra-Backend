@@ -3,6 +3,7 @@ from .dailysales_serializers import DailySalesSerializer
 from .itemininvoice_serializers import ItemInInvoiceSerializer
 from rest_framework import serializers
 from decimal import Decimal
+from django.db import transaction
 
 class InvoiceSerializer(serializers.ModelSerializer):
     items = ItemInInvoiceSerializer(many=True, required=False)
@@ -10,138 +11,120 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Invoice
-        fields = ['invoice_id', 'invoice_date', 'amount_paid', 'payment_method', 'car_number', 'discount', 'invoice_status', 'items', 'sales']
-    
+        fields = [
+            'invoice_id', 'invoice_date',
+            'amount_paid', 'payment_method','car_number',
+            'discount', 'invoice_status', 'items', 'sales'
+        ]
+        read_only_fields = ['invoice_date']
+
     def validate(self, data):
-        # Skip validasi amount_paid jika status Pending
+        # If status is pending, skip amount_paid check
         if data.get('invoice_status', '').lower() == 'pending':
             return data
 
-        items_data = data.get('items', None)
+        items = data.get('items')
         discount = data.get('discount', 0)
-
-        if items_data is None:
-            return data
-
-        total_price = sum(
-            (item['price'] - item['discount_per_item']) * item['quantity']
-            for item in items_data
-        )
-        total_amount_due = total_price - discount
         amount_paid = data.get('amount_paid', 0)
 
-        if amount_paid > total_amount_due:
-            raise serializers.ValidationError({
-                "error": f"Jumlah yang dibayar (amount_paid) tidak boleh lebih besar dari total harga yang harus dibayar ({total_amount_due})."
-            })
-
+        if items:
+            total = sum(
+                (it['price'] - it['discount_per_item']) * it['quantity']
+                for it in items
+            ) - discount
+            if amount_paid > total:
+                raise serializers.ValidationError({
+                    "amount_paid": f"cannot exceed total due ({total})."
+                })
         return data
 
+    def _recalculate_totals(self, invoice):
+        """Recompute total_price, invoice_status, and return total_due."""
+        items = ItemInInvoice.objects.filter(invoice=invoice)
+        total_price = sum(
+            (i.price - i.discount_per_item) * i.quantity for i in items
+        )
+        total_due = total_price - invoice.discount
+        invoice.invoice_status = (
+            "Full Payment" if invoice.amount_paid >= total_due
+            else "Partial Payment" if invoice.amount_paid > 0
+            else "Pending"
+        )
+        invoice.save()
+        return total_due
+
+    @transaction.atomic
     def create(self, validated_data):
-        from malitra_service.models import Product
+        items_data = validated_data.pop('items', [])
+        sales_data = validated_data.pop('sales', [])
+        invoice = super().create(validated_data)
 
-        items_data = validated_data.pop('items')
-        sales_data = validated_data.pop('sales')
-        invoice_status = validated_data.get('invoice_status', '').lower()
+        # Items
+        for it in items_data:
+            prod = it['product']
+            qty  = it['quantity']
+            if prod.product_quantity < qty:
+                raise serializers.ValidationError(
+                    {"items": f"Not enough stock for {prod.product_name}."}
+                )
+            prod.product_quantity -= qty
+            prod.save()
+            ItemInInvoice.objects.create(invoice=invoice, **it)
 
-        invoice = Invoice.objects.create(**validated_data)
-
-        total_price = 0
-        for item in items_data:
-            product = item['product']
-            quantity = item['quantity']
-            price = item['price']
-            discount_per_item = item['discount_per_item']
-
-            if product.product_quantity < quantity:
-                raise serializers.ValidationError({
-                    "error": f"Stok produk '{product.product_name}' tidak cukup (tersisa {product.product_quantity})"
-                })
-
-            subtotal = (price - discount_per_item) * quantity
-            total_price += subtotal
-
-            ItemInInvoice.objects.create(
-                invoice=invoice,
-                product=product,
-                discount_per_item=discount_per_item,
-                quantity=quantity,
-                price=price,
-            )
-
-            product.product_quantity -= quantity
-            product.save()
-
-        discount = validated_data.get('discount', 0)
-        total_amount_due = total_price - discount
-        amount_paid = validated_data.get('amount_paid', 0)
-
-        if invoice_status != 'pending' and amount_paid > total_amount_due:
-            raise serializers.ValidationError({
-                "error": f"Jumlah yang dibayar (amount_paid) tidak boleh lebih besar dari total harga yang harus dibayar ({total_amount_due})."
-            })
-
+        # Sales
         for sale in sales_data:
             ds = DailySales.objects.create(invoice=invoice, **sale)
-
-            if invoice_status == 'pending':
-                ds.total_sales_omzet = 0
-                ds.amount_paid = 0
-                ds.salary_status = "Unpaid"
-            else:
-                ds.total_sales_omzet = amount_paid
-                salary_paid = amount_paid * Decimal(0.5)  # Logika dummy
-                ds.amount_paid = salary_paid
-
+            # dummy logic; adjust as needed
+            ds.total_sales_omzet = invoice.amount_paid if invoice.invoice_status!='pending' else 0
+            ds.amount_paid = ds.total_sales_omzet * Decimal('0.5') if invoice.invoice_status!='pending' else 0
+            ds.salary_status = "Paid" if ds.amount_paid>0 else "Unpaid"
             ds.save()
 
+        # Finalize status
+        self._recalculate_totals(invoice)
         return invoice
 
+    @transaction.atomic
     def update(self, instance, validated_data):
-        from malitra_service.models import Product
+        items_data = validated_data.pop('items', None)
+        sales_data = validated_data.pop('sales', None)
 
-        items_data = validated_data.pop('items', '__not_provided__')
-        discount = validated_data.pop('discount', '__not_provided__')
-        invoice_status = validated_data.get('invoice_status', instance.invoice_status).lower()
-
-        new_amount_paid = validated_data.get('amount_paid', instance.amount_paid)
-        total_price = 0
-
-        if items_data != '__not_provided__':
-            for item in items_data:
-                subtotal = (item['price'] - item['discount_per_item']) * item['quantity']
-                total_price += subtotal
-        else:
-            for item in ItemInInvoice.objects.filter(invoice=instance):
-                subtotal = (item.price - item.discount_per_item) * item.quantity
-                total_price += subtotal
-
-        if discount == '__not_provided__':
-            discount = instance.discount
-
-        total_amount_due = total_price - discount
-
-        if invoice_status != 'pending' and new_amount_paid > total_amount_due:
-            raise serializers.ValidationError({
-                "error": f"Jumlah yang dibayar (amount_paid) tidak boleh lebih besar dari total harga yang harus dibayar ({total_amount_due})."
-            })
-
-        for attr, value in validated_data.items():
-            setattr(instance, attr, value)
+        # 1) Update simple fields
+        for attr, val in validated_data.items():
+            setattr(instance, attr, val)
         instance.save()
 
-        # Update semua DailySales terkait
-        related_sales = DailySales.objects.filter(invoice=instance)
+        # 2) Replace items if provided
+        if items_data is not None:
+            # restore stock from old items
+            for old in ItemInInvoice.objects.filter(invoice=instance):
+                p = old.product
+                p.product_quantity += old.quantity
+                p.save()
+            ItemInInvoice.objects.filter(invoice=instance).delete()
 
-        for sale in related_sales:
-            if invoice_status == 'pending':
-                sale.total_sales_omzet = 0
-                sale.amount_paid = 0
-                sale.salary_status = "Unpaid"
-            else:
-                sale.total_sales_omzet = new_amount_paid
-                salary_paid = new_amount_paid * Decimal(0.5)  # Atur sesuai kebijakan
-                sale.amount_paid = salary_paid
-            sale.save()
+            # create new items
+            for it in items_data:
+                prod = it['product']
+                qty  = it['quantity']
+                if prod.product_quantity < qty:
+                    raise serializers.ValidationError(
+                        {"items": f"Not enough stock for {prod.product_name}."}
+                    )
+                prod.product_quantity -= qty
+                prod.save()
+                ItemInInvoice.objects.create(invoice=instance, **it)
 
+        # 3) Replace sales if provided
+        if sales_data is not None:
+            DailySales.objects.filter(invoice=instance).delete()
+            for sale in sales_data:
+                ds = DailySales.objects.create(invoice=instance, **sale)
+                ds.total_sales_omzet = instance.amount_paid if instance.invoice_status!='pending' else 0
+                ds.amount_paid = ds.total_sales_omzet * Decimal('0.5') if instance.invoice_status!='pending' else 0
+                ds.salary_status = "Paid" if ds.amount_paid>0 else "Unpaid"
+                ds.save()
+
+        # 4) Recalc invoice status & totals
+        self._recalculate_totals(instance)
         return instance
