@@ -88,7 +88,8 @@ class Chatbot(models.Model):
     chatbot_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
-    text = models.CharField(max_length=255)
+    question = models.TextField(default="")
+    answer = models.TextField(default="")
 
     def __str__(self):
         return self.chatbot_id

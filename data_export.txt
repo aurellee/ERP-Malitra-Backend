@@ -1,0 +1,16 @@
+Product ID: Ban011, Name: Ban F1, Category: Ban, Brand: F3, Quantity: 1820
+Product ID: BAN001, Name: Ban Michellin, Category: Ban, Brand: Michellin, Quantity: 99
+User Email: michael@gmail.com, Username: michael
+Employee ID: 1, Name: Aurelle, Role: Sales, Hired Date: 2024-02-20, Notes: Pertama kali kerja
+Employee ID: 2, Name: Michael, Role: Mechanic, Hired Date: 2024-03-03, Notes: Michael pacarnya Aurel
+Ekspedisi ID: 2, Product ID: BAN001, Product Name: Ban Michellin, Product Quantity: 99, Qty: 100, Purchase Price: 500000.00, Sale Price: 900000.00, In/Out: 1, Date: 2025-04-19 09:29:14.493642+00:00, Ekspedisi ID: 3, Product ID: Ban011, Product Name: Ban F1, Product Quantity: 1820, Qty: 90, Purchase Price: 1500000.00, Sale Price: 900000.00, In/Out: 1, Date: 2025-04-19 09:29:51.448866+00:00, Ekspedisi ID: 4, Product ID: Ban011, Product Name: Ban F1, Product Quantity: 1820, Qty: 920, Purchase Price: 1500000.00, Sale Price: 2400000.00, In/Out: 1, Date: 2025-04-19 10:21:09.953994+00:00, Invoice ID: 1, Date: 2025-04-20, Amount Paid: 10000.00, Payment Method: Cash, Car Number: B1234XYZ, Discount: 10000.00, Status: Partially Paid
+  - Item Detail ID: 1, Product ID: BAN001, Product Name: Ban Michellin, Category: Ban, Brand: Michellin, Price: 900000.00, Quantity: 1, Discount Per Item: 50000.00
+Daily Sales ID: 1, Invoice ID: 1, Employee: Aurelle, Date: 2025-04-20, Omzet: 10000.00, Paid: 1000.00, Status: Fully Paid
+Bonus ID: 3, Employee: Aurelle, Date: 2025-04-21, Type: Reimbursement, Amount: 100000.00, Status: Paid, Notes: Makan Sayur
+Bonus ID: 4, Employee: Aurelle, Date: 2025-04-21, Type: Meal Subsidy, Amount: 90000.00, Status: Paid, Notes: Makan Bebek
+Bonus ID: 5, Employee: Aurelle, Date: 2025-04-21, Type: Transport Allowance, Amount: 20000.00, Status: Paid, Notes: Makan jagung
+Bonus ID: 6, Employee: Aurelle, Date: 2025-04-21, Type: Bonus, Amount: 5000.00, Status: Paid, Notes: Aurel kea bongus
+Bonus ID: 7, Employee: Aurelle, Date: 2025-04-21, Type: Meal Subsidy, Amount: 20000.00, Status: Paid, Notes: Aurel blm makan
+Bonus ID: 2, Employee: Aurelle, Date: 2025-04-20, Type: Transport Bonus, Amount: 150000.00, Status: Paid, Notes: Bonus tambahan untuk tugas luar kota
+Attendance ID: 2, Employee: Michael, Date: 2025-04-20, Clock In: 09:00:00, Clock Out: 17:00:00, Day Count: 1.0, Status: Present, Notes: -
+Attendance ID: 1, Employee: Aurelle, Date: 2025-04-20, Clock In: 11:00:00, Clock Out: 17:00:00, Day Count: 1.0, Status: Present, Notes: -
