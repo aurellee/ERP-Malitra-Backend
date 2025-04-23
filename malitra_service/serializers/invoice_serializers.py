@@ -94,26 +94,70 @@ class InvoiceSerializer(serializers.ModelSerializer):
             setattr(instance, attr, val)
         instance.save()
 
-        # 2) Replace items if provided
-        if items_data is not None:
-            # restore stock from old items
-            for old in ItemInInvoice.objects.filter(invoice=instance):
-                p = old.product
-                p.product_quantity += old.quantity
-                p.save()
-            ItemInInvoice.objects.filter(invoice=instance).delete()
+        # 1) update the simple invoice fields
+        for attr, val in validated_data.items():
+            setattr(instance, attr, val)
+        instance.save()
 
-            # create new items
+        # 2) handle items _only_ if provided
+        if items_data is not None:
+            # build lookup of existing items: { product_id: ItemInInvoice instance }
+            existing = {
+                item.product.product_id: item
+                for item in ItemInInvoice.objects.filter(invoice=instance)
+            }
+            # track which ones we see anew
+            new_ids = set()
+
             for it in items_data:
-                prod = it['product']
-                qty  = it['quantity']
-                if prod.product_quantity < qty:
-                    raise serializers.ValidationError(
-                        {"items": f"Not enough stock for {prod.product_name}."}
+                prod = it['product']           # a Product instance
+                new_qty = it['quantity']
+                new_ids.add(prod.product_id)
+
+                if prod.product_id in existing:
+                    # update case
+                    old_item = existing[prod.product_id]
+                    old_qty = old_item.quantity
+                    diff = new_qty - old_qty
+
+                    # adjust stock only by the difference
+                    if diff:
+                        if diff > 0 and prod.product_quantity < diff:
+                            raise serializers.ValidationError({
+                                "items": f"Not enough stock for {prod.product_name} (need {diff})."
+                            })
+                        prod.product_quantity -= diff
+                        prod.save()
+
+                    # update the item record
+                    old_item.quantity            = new_qty
+                    old_item.price               = it['price']
+                    old_item.discount_per_item   = it['discount_per_item']
+                    old_item.save()
+
+                else:
+                    # brand-new item: subtract full qty
+                    if prod.product_quantity < new_qty:
+                        raise serializers.ValidationError({
+                            "items": f"Not enough stock for {prod.product_name} (only {prod.product_quantity})."
+                        })
+                    prod.product_quantity -= new_qty
+                    prod.save()
+                    ItemInInvoice.objects.create(
+                        invoice=instance,
+                        product=prod,
+                        quantity=new_qty,
+                        price=it['price'],
+                        discount_per_item=it['discount_per_item'],
                     )
-                prod.product_quantity -= qty
-                prod.save()
-                ItemInInvoice.objects.create(invoice=instance, **it)
+
+            # 3) any existing items *not* in the new list must be removed & stock restored
+            for pid, old_item in existing.items():
+                if pid not in new_ids:
+                    prod = old_item.product
+                    prod.product_quantity += old_item.quantity
+                    prod.save()
+                    old_item.delete()
 
         # 3) Replace sales if provided
         if sales_data is not None:
