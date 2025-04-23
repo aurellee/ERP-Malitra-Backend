@@ -6,6 +6,7 @@ from malitra_service.models import DailySales, Employee, EmployeeBenefits
 from django.db.models import ExpressionWrapper, F, FloatField, Sum
 from datetime import datetime
 from malitra_service.serializers.employee_serializers import EmployeeSerializer
+from decimal import Decimal
 
 class EmployeeCreate(APIView):
     permission_classes = [AllowAny]
@@ -26,10 +27,34 @@ class EmployeeListView(APIView):
             employees = Employee.objects.all()
             data = []
             for employee in employees:
-                total_salary = DailySales.objects.filter(
+                # 1) grab all relevant sales for this employee
+                sales_qs = DailySales.objects.filter(
                     employee_id=employee,
-                    salary_status="Unpaid"
-                ).aggregate(total=Sum('total_sales_omzet'))['total'] or 0
+                    # invoice__invoice_status__in=["Partially Paid","Full Payment"]
+                )
+
+                total_omzet         = Decimal("0")
+                total_salary = Decimal("0")
+
+                for ds in sales_qs:
+                    omzet       = ds.total_sales_omzet or Decimal("0")
+                    paid_old    = ds.salary_paid or Decimal("0")
+                    expected    = (omzet * Decimal("0.10")).quantize(Decimal("0.01"))
+                    remaining   = expected - paid_old
+
+                    # only pay out on Partially or Fully Paid invoices…
+                    if ds.invoice.invoice_status == "Full Payment":
+                        # skip if already fully paid
+                        if ds.salary_status == "Fully Paid":
+                            continue
+                        if remaining > 0:
+                            total_salary += remaining
+
+                    elif ds.invoice.invoice_status == "Partially Paid":
+                        if remaining > 0:
+                            total_salary += remaining
+
+                    total_omzet += omzet
                 
                 total_bonus = EmployeeBenefits.objects.filter(
                     employee_id=employee,
