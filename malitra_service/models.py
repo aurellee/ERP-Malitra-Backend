@@ -136,9 +136,13 @@ class DailySales(models.Model):
     salary_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     salary_status = models.CharField(max_length=255, default="Unpaid")
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['invoice', 'employee'], name='unique_invoice_employee')
+        ]
     def __str__(self):
         return self.daily_sales_id
-
+    
     class Meta:
         db_table = 'DailySales'
 

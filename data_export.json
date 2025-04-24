@@ -1,240 +1,1530 @@
 {
   "products": [
     {
-      "product_id": "Ban011",
-      "name": "Ban F1",
-      "category": "Ban",
-      "brand": "F3",
-      "quantity": 1820
+      "product_id": "KR022",
+      "name": "Kampas Rem Mobil",
+      "category": "SpareParts Motor",
+      "brand": "Pantene",
+      "quantity": 499
     },
     {
-      "product_id": "BAN001",
-      "name": "Ban Michellin",
+      "product_id": "BHJK",
+      "name": "Aksesoris Motor",
+      "category": "Oli",
+      "brand": "Calvin Klein",
+      "quantity": 68
+    },
+    {
+      "product_id": "MVK25",
+      "name": "Aksesoris Mobil",
+      "category": "SpareParts Mobil",
+      "brand": "Laneige",
+      "quantity": 2503
+    },
+    {
+      "product_id": "A123",
+      "name": "Kanvas Rem Updated2",
+      "category": "Aki",
+      "brand": "ABCDEFG",
+      "quantity": 8
+    },
+    {
+      "product_id": "JAL019",
+      "name": "Blindspot Mirror Motor",
+      "category": "Campuran",
+      "brand": "Loreal",
+      "quantity": 2482
+    },
+    {
+      "product_id": "MKL",
+      "name": "Ban Mobil",
       "category": "Ban",
-      "brand": "Michellin",
-      "quantity": 99
+      "brand": "Honda",
+      "quantity": 152
     }
   ],
   "users": [
     {
       "id": 1,
       "email": "michael@gmail.com",
-      "username": "michael",
+      "username": "admin",
+      "first_name": "",
+      "last_name": ""
+    },
+    {
+      "id": 2,
+      "email": "aurel@gmail.com",
+      "username": "admin",
+      "first_name": "",
+      "last_name": ""
+    },
+    {
+      "id": 3,
+      "email": "aurelia@gmail.com",
+      "username": "admin",
       "first_name": "",
       "last_name": ""
     }
   ],
   "employees": [
     {
-      "employee_id": 1,
-      "name": "Aurelle",
-      "role": "Sales",
-      "hired_date": "2024-02-20",
+      "employee_id": 2,
+      "name": "Kenzu Christian Dior",
+      "role": "Mechanic",
+      "hired_date": "2024-05-22",
       "notes": "Pertama kali kerja"
     },
     {
-      "employee_id": 2,
-      "name": "Michael",
+      "employee_id": 1,
+      "name": "Eka Ralph Lauren",
+      "role": "Sales",
+      "hired_date": "2023-12-01",
+      "notes": "Freelance sales selama musim promosi"
+    },
+    {
+      "employee_id": 6,
+      "name": "Sabrina Putri",
+      "role": "Sales",
+      "hired_date": "2025-04-10",
+      "notes": "Pertama kali kerja"
+    },
+    {
+      "employee_id": 7,
+      "name": "Livia Angelica",
       "role": "Mechanic",
-      "hired_date": "2024-03-03",
-      "notes": "Michael pacarnya Aurel"
+      "hired_date": "2025-04-12",
+      "notes": "Pertama kali kerja"
+    },
+    {
+      "employee_id": 3,
+      "name": "Hera Hermes",
+      "role": "Sales",
+      "hired_date": "2003-06-22",
+      "notes": "Kinerja dan sales skillnya bagus"
+    },
+    {
+      "employee_id": 8,
+      "name": "Dhana Lalapan",
+      "role": "Mechanic",
+      "hired_date": "2025-04-05",
+      "notes": "Pertama kali kerja"
+    },
+    {
+      "employee_id": 9,
+      "name": "Cindy Mareta",
+      "role": "Sales",
+      "hired_date": "2025-03-03",
+      "notes": "Pertama kali kerja"
+    },
+    {
+      "employee_id": 10,
+      "name": "Reina Salma",
+      "role": "Sales",
+      "hired_date": "2025-02-01",
+      "notes": "Pertama kali kerja"
+    },
+    {
+      "employee_id": 11,
+      "name": "Zaky Farhan",
+      "role": "Mechanic",
+      "hired_date": "2025-04-12",
+      "notes": "Pertama kali kerja"
+    },
+    {
+      "employee_id": 12,
+      "name": "Ryan Prakoso",
+      "role": "Mechanic",
+      "hired_date": "2025-02-07",
+      "notes": "Pertama kali kerja"
+    },
+    {
+      "employee_id": 13,
+      "name": "Dewi Ayu Rahmawati",
+      "role": "Sales",
+      "hired_date": "2025-04-17",
+      "notes": "Pertama kali kerja"
     }
   ],
   "ekspedisi": [
     {
+      "ekspedisi_id": 1,
+      "product": {
+        "product_id": "A123",
+        "name": "Kanvas Rem Updated2",
+        "category": "Aki",
+        "brand": "ABCDEFG",
+        "quantity": 8
+      },
+      "qty": 10,
+      "purchase_price": 20.0,
+      "sale_price": 40.0,
+      "in_or_out": 1,
+      "date": "2025-04-16T14:31:16.216003+00:00"
+    },
+    {
       "ekspedisi_id": 2,
       "product": {
-        "product_id": "BAN001",
-        "name": "Ban Michellin",
-        "category": "Ban",
-        "brand": "Michellin",
-        "quantity": 99
+        "product_id": "KR022",
+        "name": "Kampas Rem Mobil",
+        "category": "SpareParts Motor",
+        "brand": "Pantene",
+        "quantity": 499
       },
-      "qty": 100,
+      "qty": 500,
       "purchase_price": 500000.0,
-      "sale_price": 900000.0,
+      "sale_price": 550000.0,
       "in_or_out": 1,
-      "date": "2025-04-19T09:29:14.493642+00:00"
+      "date": "2025-04-16T15:20:01.918072+00:00"
     },
     {
       "ekspedisi_id": 3,
       "product": {
-        "product_id": "Ban011",
-        "name": "Ban F1",
-        "category": "Ban",
-        "brand": "F3",
-        "quantity": 1820
+        "product_id": "MVK25",
+        "name": "Aksesoris Mobil",
+        "category": "SpareParts Mobil",
+        "brand": "Laneige",
+        "quantity": 2503
       },
-      "qty": 90,
-      "purchase_price": 1500000.0,
-      "sale_price": 900000.0,
+      "qty": 2505,
+      "purchase_price": 500000.0,
+      "sale_price": 580000.0,
       "in_or_out": 1,
-      "date": "2025-04-19T09:29:51.448866+00:00"
+      "date": "2025-04-16T17:35:01.112268+00:00"
     },
     {
       "ekspedisi_id": 4,
       "product": {
-        "product_id": "Ban011",
-        "name": "Ban F1",
-        "category": "Ban",
-        "brand": "F3",
-        "quantity": 1820
+        "product_id": "JAL019",
+        "name": "Blindspot Mirror Motor",
+        "category": "Campuran",
+        "brand": "Loreal",
+        "quantity": 2482
       },
-      "qty": 920,
-      "purchase_price": 1500000.0,
-      "sale_price": 2400000.0,
+      "qty": 2524,
+      "purchase_price": 125000.0,
+      "sale_price": 140000.0,
       "in_or_out": 1,
-      "date": "2025-04-19T10:21:09.953994+00:00"
+      "date": "2025-04-16T17:38:48.418111+00:00"
+    },
+    {
+      "ekspedisi_id": 5,
+      "product": {
+        "product_id": "BHJK",
+        "name": "Aksesoris Motor",
+        "category": "Oli",
+        "brand": "Calvin Klein",
+        "quantity": 68
+      },
+      "qty": 100,
+      "purchase_price": 660000.0,
+      "sale_price": 700000.0,
+      "in_or_out": 1,
+      "date": "2025-04-16T18:50:42.458955+00:00"
+    },
+    {
+      "ekspedisi_id": 9,
+      "product": {
+        "product_id": "MKL",
+        "name": "Ban Mobil",
+        "category": "Ban",
+        "brand": "Honda",
+        "quantity": 152
+      },
+      "qty": 200,
+      "purchase_price": 6000000.0,
+      "sale_price": 6200000.0,
+      "in_or_out": 1,
+      "date": "2025-04-19T09:26:17.467964+00:00"
     }
   ],
   "invoices": [
     {
-      "invoice_id": 1,
-      "date": "2025-04-20",
-      "amount_paid": 10000.0,
+      "invoice_id": 5,
+      "date": "2025-04-18",
+      "amount_paid": 400000.0,
       "payment_method": "Cash",
       "car_number": "B1234XYZ",
       "discount": 10000.0,
-      "status": "Partially Paid",
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 8,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 250000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 9,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aksesoris Motor",
+            "category": "Oli",
+            "brand": "Calvin Klein",
+            "quantity": 68
+          },
+          "price": 290000.0,
+          "quantity": 4,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 9,
+      "date": "2025-04-19",
+      "amount_paid": 5000000.0,
+      "payment_method": "Cash",
+      "car_number": "B1234XYZ",
+      "discount": 10000.0,
+      "status": "Partial Paid",
+      "items": [
+        {
+          "detail_id": 16,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 17,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 13,
+      "date": "2025-04-19",
+      "amount_paid": 12000000.0,
+      "payment_method": "Cash",
+      "car_number": "B1234XYZ",
+      "discount": 10000.0,
+      "status": "Partial Paid",
+      "items": [
+        {
+          "detail_id": 24,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 25,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 2,
+      "date": "2025-04-17",
+      "amount_paid": 30000.0,
+      "payment_method": "Cash",
+      "car_number": "B1234XYZ",
+      "discount": 10000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 2,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 24000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 3,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aksesoris Motor",
+            "category": "Oli",
+            "brand": "Calvin Klein",
+            "quantity": 68
+          },
+          "price": 24000.0,
+          "quantity": 4,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 1,
+      "date": "2025-04-17",
+      "amount_paid": 40000.0,
+      "payment_method": "Cash",
+      "car_number": "B1234XYZ",
+      "discount": 10000.0,
+      "status": "Pending",
       "items": [
         {
           "detail_id": 1,
           "product": {
-            "product_id": "BAN001",
-            "name": "Ban Michellin",
-            "category": "Ban",
-            "brand": "Michellin",
-            "quantity": 99
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
           },
-          "price": 900000.0,
+          "price": 24000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 4,
+      "date": "2025-04-17",
+      "amount_paid": 90000.0,
+      "payment_method": "Cash",
+      "car_number": "B1234XYZ",
+      "discount": 10000.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 6,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 24000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 7,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aksesoris Motor",
+            "category": "Oli",
+            "brand": "Calvin Klein",
+            "quantity": 68
+          },
+          "price": 24000.0,
+          "quantity": 4,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 7,
+      "date": "2025-04-18",
+      "amount_paid": 36000.0,
+      "payment_method": "Cash",
+      "car_number": "B1234XYZ",
+      "discount": 10000.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 12,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 250000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 13,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aksesoris Motor",
+            "category": "Oli",
+            "brand": "Calvin Klein",
+            "quantity": 68
+          },
+          "price": 290000.0,
+          "quantity": 4,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 20,
+      "date": "2025-04-23",
+      "amount_paid": 12570000.0,
+      "payment_method": "Cash",
+      "car_number": "B 1234 XYZ",
+      "discount": 20000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 42,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 43,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 8,
+      "date": "2025-04-18",
+      "amount_paid": 400000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1234 XYZ",
+      "discount": 10000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 14,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 250000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 15,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aksesoris Motor",
+            "category": "Oli",
+            "brand": "Calvin Klein",
+            "quantity": 68
+          },
+          "price": 290000.0,
+          "quantity": 4,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 22,
+      "date": "2025-04-23",
+      "amount_paid": 21950000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1339 CC",
+      "discount": 0.0,
+      "status": "Full Paid",
+      "items": [
+        {
+          "detail_id": 46,
+          "product": {
+            "product_id": "KR022",
+            "name": "Kampas Rem Mobil",
+            "category": "SpareParts Motor",
+            "brand": "Pantene",
+            "quantity": 499
+          },
+          "price": 550000.0,
           "quantity": 1,
-          "discount_per_item": 50000.0
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 47,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 48,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aksesoris Motor",
+            "category": "Oli",
+            "brand": "Calvin Klein",
+            "quantity": 68
+          },
+          "price": 700000.0,
+          "quantity": 4,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 23,
+      "date": "2025-04-23",
+      "amount_paid": 18000000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1339 CC",
+      "discount": 0.0,
+      "status": "Partially Paid",
+      "items": [
+        {
+          "detail_id": 49,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6300000.0,
+          "quantity": 3,
+          "discount_per_item": 25000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 15,
+      "date": "2025-04-22",
+      "amount_paid": 40000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1234 XYZ",
+      "discount": 20000.0,
+      "status": "Partial Paid",
+      "items": []
+    },
+    {
+      "invoice_id": 24,
+      "date": "2025-04-23",
+      "amount_paid": 20000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1339 MVK",
+      "discount": 0.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 50,
+          "product": {
+            "product_id": "MVK25",
+            "name": "Aksesoris Mobil",
+            "category": "SpareParts Mobil",
+            "brand": "Laneige",
+            "quantity": 2503
+          },
+          "price": 580000.0,
+          "quantity": 3,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 14,
+      "date": "2025-04-19",
+      "amount_paid": 200000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1235 XYZ",
+      "discount": 10000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 26,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 27,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 16,
+      "date": "2025-04-22",
+      "amount_paid": 200000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1235 XYZ",
+      "discount": 10000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 32,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 33,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 19,
+      "date": "2025-04-23",
+      "amount_paid": 500000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1237 XYZ",
+      "discount": 30000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 40,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 41,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 17,
+      "date": "2025-04-22",
+      "amount_paid": 200000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1235 XYZ",
+      "discount": 10000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 34,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 35,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 18,
+      "date": "2025-04-22",
+      "amount_paid": 12500000.0,
+      "payment_method": "Cash",
+      "car_number": "B1234XYZ",
+      "discount": 10000.0,
+      "status": "Partial Paid",
+      "items": [
+        {
+          "detail_id": 36,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 37,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 21,
+      "date": "2025-04-23",
+      "amount_paid": 12570000.0,
+      "payment_method": "Cash",
+      "car_number": "B 1234 XYZ",
+      "discount": 10000.0,
+      "status": "Partial Paid",
+      "items": [
+        {
+          "detail_id": 44,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 45,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 6,
+      "date": "2025-04-18",
+      "amount_paid": 500000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1237 XYZ",
+      "discount": 30000.0,
+      "status": "Partial Payment",
+      "items": [
+        {
+          "detail_id": 10,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 250000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 11,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aksesoris Motor",
+            "category": "Oli",
+            "brand": "Calvin Klein",
+            "quantity": 68
+          },
+          "price": 290000.0,
+          "quantity": 4,
+          "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 25,
+      "date": "2025-04-23",
+      "amount_paid": 18000000.0,
+      "payment_method": "Cash",
+      "car_number": "B 1339 CC",
+      "discount": 0.0,
+      "status": "Partially Paid",
+      "items": [
+        {
+          "detail_id": 51,
+          "product": {
+            "product_id": "A123",
+            "name": "Kanvas Rem Updated2",
+            "category": "Aki",
+            "brand": "ABCDEFG",
+            "quantity": 8
+          },
+          "price": 40000.0,
+          "quantity": 2,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 52,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 26,
+      "date": "2025-04-24",
+      "amount_paid": 12570000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1339 CC",
+      "discount": 10000.0,
+      "status": "Partially Paid",
+      "items": [
+        {
+          "detail_id": 53,
+          "product": {
+            "product_id": "JAL019",
+            "name": "Blindspot Mirror Motor",
+            "category": "Campuran",
+            "brand": "Loreal",
+            "quantity": 2482
+          },
+          "price": 140000.0,
+          "quantity": 2,
+          "discount_per_item": 1000.0
+        },
+        {
+          "detail_id": 54,
+          "product": {
+            "product_id": "MKL",
+            "name": "Ban Mobil",
+            "category": "Ban",
+            "brand": "Honda",
+            "quantity": 152
+          },
+          "price": 6200000.0,
+          "quantity": 3,
+          "discount_per_item": 1000.0
         }
       ]
     }
   ],
   "daily_sales": [
     {
-      "daily_sales_id": 1,
+      "daily_sales_id": 28,
       "invoice": {
-        "invoice_id": 1,
-        "amount_paid": 10000.0,
-        "status": "Partially Paid"
+        "invoice_id": 20,
+        "amount_paid": 12570000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-23",
+      "omzet": 12570000.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 5,
+      "invoice": {
+        "invoice_id": 5,
+        "amount_paid": 400000.0,
+        "status": "Pending"
       },
       "employee": {
         "employee_id": 1,
-        "name": "Aurelle",
+        "name": "Eka Ralph Lauren",
         "role": "Sales",
-        "hired_date": "2024-02-20",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-18",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 9,
+      "invoice": {
+        "invoice_id": 9,
+        "amount_paid": 5000000.0,
+        "status": "Partial Paid"
+      },
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-19",
+      "omzet": 5000000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 13,
+      "invoice": {
+        "invoice_id": 13,
+        "amount_paid": 12000000.0,
+        "status": "Partial Paid"
+      },
+      "employee": {
+        "employee_id": 7,
+        "name": "Livia Angelica",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
         "notes": "Pertama kali kerja"
       },
-      "date": "2025-04-20",
-      "omzet": 10000.0,
-      "paid": 1000.0,
-      "status": "Fully Paid"
+      "date": "2025-04-19",
+      "omzet": 12000000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 30,
+      "invoice": {
+        "invoice_id": 22,
+        "amount_paid": 21950000.0,
+        "status": "Full Paid"
+      },
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-23",
+      "omzet": 21950000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 31,
+      "invoice": {
+        "invoice_id": 23,
+        "amount_paid": 18000000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 10,
+        "name": "Reina Salma",
+        "role": "Sales",
+        "hired_date": "2025-02-01",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-23",
+      "omzet": 18000000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 2,
+      "invoice": {
+        "invoice_id": 2,
+        "amount_paid": 30000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-17",
+      "omzet": 30000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 1,
+      "invoice": {
+        "invoice_id": 1,
+        "amount_paid": 40000.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-17",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 4,
+      "invoice": {
+        "invoice_id": 4,
+        "amount_paid": 90000.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-17",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 7,
+      "invoice": {
+        "invoice_id": 7,
+        "amount_paid": 36000.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-18",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 18,
+      "invoice": {
+        "invoice_id": 18,
+        "amount_paid": 12500000.0,
+        "status": "Partial Paid"
+      },
+      "employee": {
+        "employee_id": 10,
+        "name": "Reina Salma",
+        "role": "Sales",
+        "hired_date": "2025-02-01",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-22",
+      "omzet": 12500000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 32,
+      "invoice": {
+        "invoice_id": 24,
+        "amount_paid": 20000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-23",
+      "omzet": 20000.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 27,
+      "invoice": {
+        "invoice_id": 19,
+        "amount_paid": 500000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-23",
+      "omzet": 500000.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 8,
+      "invoice": {
+        "invoice_id": 8,
+        "amount_paid": 400000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-18",
+      "omzet": 400000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 6,
+      "invoice": {
+        "invoice_id": 6,
+        "amount_paid": 500000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-18",
+      "omzet": 500000.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 14,
+      "invoice": {
+        "invoice_id": 14,
+        "amount_paid": 200000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-19",
+      "omzet": 200000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 16,
+      "invoice": {
+        "invoice_id": 16,
+        "amount_paid": 200000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-22",
+      "omzet": 200000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 33,
+      "invoice": {
+        "invoice_id": 25,
+        "amount_paid": 18000000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 13,
+        "name": "Dewi Ayu Rahmawati",
+        "role": "Sales",
+        "hired_date": "2025-04-17",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-23",
+      "omzet": 18000000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 17,
+      "invoice": {
+        "invoice_id": 17,
+        "amount_paid": 200000.0,
+        "status": "Partial Payment"
+      },
+      "employee": {
+        "employee_id": 11,
+        "name": "Zaky Farhan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-22",
+      "omzet": 200000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 34,
+      "invoice": {
+        "invoice_id": 25,
+        "amount_paid": 18000000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 12,
+        "name": "Ryan Prakoso",
+        "role": "Mechanic",
+        "hired_date": "2025-02-07",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-23",
+      "omzet": 18000000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 29,
+      "invoice": {
+        "invoice_id": 21,
+        "amount_paid": 12570000.0,
+        "status": "Partial Paid"
+      },
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-23",
+      "omzet": 12570000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 35,
+      "invoice": {
+        "invoice_id": 26,
+        "amount_paid": 12570000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 12,
+        "name": "Ryan Prakoso",
+        "role": "Mechanic",
+        "hired_date": "2025-02-07",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-24",
+      "omzet": 12570000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 36,
+      "invoice": {
+        "invoice_id": 26,
+        "amount_paid": 12570000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 12,
+        "name": "Ryan Prakoso",
+        "role": "Mechanic",
+        "hired_date": "2025-02-07",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-24",
+      "omzet": 12570000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
     }
   ],
   "employee_benefits": [
     {
-      "bonus_id": 3,
+      "bonus_id": 1,
       "employee": {
         "employee_id": 1,
-        "name": "Aurelle",
+        "name": "Eka Ralph Lauren",
         "role": "Sales",
-        "hired_date": "2024-02-20",
-        "notes": "Pertama kali kerja"
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
       },
-      "date": "2025-04-21",
-      "type": "Reimbursement",
-      "amount": 100000.0,
-      "status": "Paid",
-      "notes": "Makan Sayur"
-    },
-    {
-      "bonus_id": 4,
-      "employee": {
-        "employee_id": 1,
-        "name": "Aurelle",
-        "role": "Sales",
-        "hired_date": "2024-02-20",
-        "notes": "Pertama kali kerja"
-      },
-      "date": "2025-04-21",
-      "type": "Meal Subsidy",
-      "amount": 90000.0,
-      "status": "Paid",
-      "notes": "Makan Bebek"
-    },
-    {
-      "bonus_id": 5,
-      "employee": {
-        "employee_id": 1,
-        "name": "Aurelle",
-        "role": "Sales",
-        "hired_date": "2024-02-20",
-        "notes": "Pertama kali kerja"
-      },
-      "date": "2025-04-21",
-      "type": "Transport Allowance",
-      "amount": 20000.0,
-      "status": "Paid",
-      "notes": "Makan jagung"
-    },
-    {
-      "bonus_id": 6,
-      "employee": {
-        "employee_id": 1,
-        "name": "Aurelle",
-        "role": "Sales",
-        "hired_date": "2024-02-20",
-        "notes": "Pertama kali kerja"
-      },
-      "date": "2025-04-21",
-      "type": "Bonus",
-      "amount": 5000.0,
-      "status": "Paid",
-      "notes": "Aurel kea bongus"
-    },
-    {
-      "bonus_id": 7,
-      "employee": {
-        "employee_id": 1,
-        "name": "Aurelle",
-        "role": "Sales",
-        "hired_date": "2024-02-20",
-        "notes": "Pertama kali kerja"
-      },
-      "date": "2025-04-21",
-      "type": "Meal Subsidy",
-      "amount": 20000.0,
-      "status": "Paid",
-      "notes": "Aurel blm makan"
+      "date": "2025-04-13",
+      "type": "Transport Bonus",
+      "amount": 150000.0,
+      "status": "Unpaid",
+      "notes": "Bonus tambahan untuk tugas luar kota"
     },
     {
       "bonus_id": 2,
       "employee": {
         "employee_id": 1,
-        "name": "Aurelle",
+        "name": "Eka Ralph Lauren",
         "role": "Sales",
-        "hired_date": "2024-02-20",
-        "notes": "Pertama kali kerja"
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
       },
-      "date": "2025-04-20",
+      "date": "2025-04-13",
       "type": "Transport Bonus",
       "amount": 150000.0,
       "status": "Paid",
       "notes": "Bonus tambahan untuk tugas luar kota"
+    },
+    {
+      "bonus_id": 3,
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-21",
+      "type": "Incentive",
+      "amount": 500000.0,
+      "status": "Unpaid",
+      "notes": "Omset Penjualan naik 5% dari bulan lalu"
+    },
+    {
+      "bonus_id": 4,
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "type": "Meal Subsidy",
+      "amount": 40000.0,
+      "status": "Unpaid",
+      "notes": "Beli Makan Siang setelah Canvass"
+    },
+    {
+      "bonus_id": 5,
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-21",
+      "type": "Reimbursement",
+      "amount": 30.0,
+      "status": "Unpaid",
+      "notes": "e"
     }
   ],
   "attendance": [
     {
-      "absence_id": 2,
+      "absence_id": 8,
       "employee": {
-        "employee_id": 2,
-        "name": "Michael",
-        "role": "Mechanic",
-        "hired_date": "2024-03-03",
-        "notes": "Michael pacarnya Aurel"
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
       },
       "date": "2025-04-20",
       "clock_in": "09:00:00",
@@ -244,21 +1534,608 @@
       "notes": "-"
     },
     {
-      "absence_id": 1,
+      "absence_id": 9,
       "employee": {
-        "employee_id": 1,
-        "name": "Aurelle",
-        "role": "Sales",
-        "hired_date": "2024-02-20",
+        "employee_id": 8,
+        "name": "Dhana Lalapan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-05",
         "notes": "Pertama kali kerja"
       },
       "date": "2025-04-20",
-      "clock_in": "11:00:00",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 10,
+      "employee": {
+        "employee_id": 9,
+        "name": "Cindy Mareta",
+        "role": "Sales",
+        "hired_date": "2025-03-03",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 11,
+      "employee": {
+        "employee_id": 10,
+        "name": "Reina Salma",
+        "role": "Sales",
+        "hired_date": "2025-02-01",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 12,
+      "employee": {
+        "employee_id": 11,
+        "name": "Zaky Farhan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 13,
+      "employee": {
+        "employee_id": 12,
+        "name": "Ryan Prakoso",
+        "role": "Mechanic",
+        "hired_date": "2025-02-07",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 14,
+      "employee": {
+        "employee_id": 13,
+        "name": "Dewi Ayu Rahmawati",
+        "role": "Sales",
+        "hired_date": "2025-04-17",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 3,
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-19",
+      "clock_in": "09:00:00",
+      "clock_out": "10:00:00",
+      "day_count": 0.5,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 2,
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-19",
+      "clock_in": "09:00:00",
+      "clock_out": "13:00:00",
+      "day_count": 0.5,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 5,
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-19",
+      "clock_in": null,
+      "clock_out": null,
+      "day_count": 0.0,
+      "status": "On Leave",
+      "notes": "-"
+    },
+    {
+      "absence_id": 6,
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "On Sick",
+      "notes": "-"
+    },
+    {
+      "absence_id": 4,
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-19",
+      "clock_in": null,
+      "clock_out": null,
+      "day_count": 0.0,
+      "status": "Absent",
+      "notes": "-"
+    },
+    {
+      "absence_id": 1,
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-19",
+      "clock_in": "08:00:00",
+      "clock_out": "13:00:00",
+      "day_count": 0.5,
+      "status": "On Sick",
+      "notes": "-"
+    },
+    {
+      "absence_id": 15,
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 16,
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 7,
+      "employee": {
+        "employee_id": 7,
+        "name": "Livia Angelica",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-20",
+      "clock_in": "09:00:09",
+      "clock_out": "14:00:00",
+      "day_count": 0.5,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 18,
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 17,
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 19,
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 20,
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 21,
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 22,
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 23,
+      "employee": {
+        "employee_id": 7,
+        "name": "Livia Angelica",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 24,
+      "employee": {
+        "employee_id": 7,
+        "name": "Livia Angelica",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 25,
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 26,
+      "employee": {
+        "employee_id": 3,
+        "name": "Hera Hermes",
+        "role": "Sales",
+        "hired_date": "2003-06-22",
+        "notes": "Kinerja dan sales skillnya bagus"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 27,
+      "employee": {
+        "employee_id": 8,
+        "name": "Dhana Lalapan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-05",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 28,
+      "employee": {
+        "employee_id": 8,
+        "name": "Dhana Lalapan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-05",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 29,
+      "employee": {
+        "employee_id": 9,
+        "name": "Cindy Mareta",
+        "role": "Sales",
+        "hired_date": "2025-03-03",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 30,
+      "employee": {
+        "employee_id": 9,
+        "name": "Cindy Mareta",
+        "role": "Sales",
+        "hired_date": "2025-03-03",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 31,
+      "employee": {
+        "employee_id": 10,
+        "name": "Reina Salma",
+        "role": "Sales",
+        "hired_date": "2025-02-01",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 32,
+      "employee": {
+        "employee_id": 11,
+        "name": "Zaky Farhan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 33,
+      "employee": {
+        "employee_id": 11,
+        "name": "Zaky Farhan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 34,
+      "employee": {
+        "employee_id": 12,
+        "name": "Ryan Prakoso",
+        "role": "Mechanic",
+        "hired_date": "2025-02-07",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 35,
+      "employee": {
+        "employee_id": 12,
+        "name": "Ryan Prakoso",
+        "role": "Mechanic",
+        "hired_date": "2025-02-07",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 36,
+      "employee": {
+        "employee_id": 13,
+        "name": "Dewi Ayu Rahmawati",
+        "role": "Sales",
+        "hired_date": "2025-04-17",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
+      "clock_out": "17:00:00",
+      "day_count": 1.0,
+      "status": "Present",
+      "notes": "-"
+    },
+    {
+      "absence_id": 37,
+      "employee": {
+        "employee_id": 13,
+        "name": "Dewi Ayu Rahmawati",
+        "role": "Sales",
+        "hired_date": "2025-04-17",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-21",
+      "clock_in": "09:00:00",
       "clock_out": "17:00:00",
       "day_count": 1.0,
       "status": "Present",
       "notes": "-"
     }
   ],
-  "payroll": []
+  "payroll": [
+    {
+      "payroll_id": 1,
+      "employee": {
+        "employee_id": 8,
+        "name": "Dhana Lalapan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-05",
+        "notes": "Pertama kali kerja"
+      },
+      "payment_date": "2025-04-01T00:00:00+00:00",
+      "sales_omzet": 50000.0,
+      "salary_amount": 70000.0
+    },
+    {
+      "payroll_id": 2,
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "payment_date": "2025-04-01T00:00:00+00:00",
+      "sales_omzet": 50000.0,
+      "salary_amount": 70000.0
+    }
+  ]
 }
