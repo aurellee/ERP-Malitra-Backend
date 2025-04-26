@@ -45,11 +45,11 @@ class InvoiceSerializer(serializers.ModelSerializer):
             (i.price * i.quantity) - i.discount_per_item for i in items
         )
         total_due = total_price - invoice.discount
-        invoice.invoice_status = (
-            "Full Payment" if invoice.amount_paid >= total_due
-            else "Partially Paid" if invoice.amount_paid > 0
-            else "Pending"
-        )
+        # invoice.invoice_status = (
+        #     "Full Payment" if invoice.amount_paid >= total_due
+        #     else "Partially Paid" if invoice.amount_paid > 0
+        #     else "Pending"
+        # )
         invoice.save()
         return total_due
 

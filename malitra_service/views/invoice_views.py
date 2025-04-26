@@ -14,7 +14,7 @@ class InvoiceListView(APIView):
 
     def get(self, request, *args, **kwargs):
         try:
-            invoices = Invoice.objects.all()
+            invoices = Invoice.objects.exclude(invoice_status="Pending")
             result = []
 
             for invoice in invoices:
