@@ -1,46 +1,74 @@
 {
   "products": [
     {
-      "product_id": "KR022",
-      "name": "Kampas Rem Mobil",
+      "product_id": "3190050198",
+      "name": "Radiator Coolant 1L",
+      "category": "SpareParts Mobil",
+      "brand": "Prestone",
+      "quantity": 8998
+    },
+    {
+      "product_id": "6222317143",
+      "name": "Shockbreaker Belakang",
+      "category": "SpareParts Mobil",
+      "brand": "Kayaba",
+      "quantity": 3999
+    },
+    {
+      "product_id": "5190032871",
+      "name": "Busi Iridium",
       "category": "SpareParts Motor",
-      "brand": "Pantene",
-      "quantity": 499
+      "brand": "NGK",
+      "quantity": 297
+    },
+    {
+      "product_id": "KR022",
+      "name": "Kampas Rem Depan",
+      "category": "SpareParts Mobil",
+      "brand": "Bendix",
+      "quantity": 995
+    },
+    {
+      "product_id": "7490032872",
+      "name": "Aki Kering 12V 7Ah",
+      "category": "Aki",
+      "brand": "Yuasa",
+      "quantity": 2498
     },
     {
       "product_id": "BHJK",
-      "name": "Aksesoris Motor",
-      "category": "Oli",
-      "brand": "Calvin Klein",
-      "quantity": 68
-    },
-    {
-      "product_id": "MVK25",
-      "name": "Aksesoris Mobil",
-      "category": "SpareParts Mobil",
-      "brand": "Laneige",
-      "quantity": 2503
+      "name": "Aki Kering 12V 5Ah",
+      "category": "Aki",
+      "brand": "GS Astra",
+      "quantity": 3063
     },
     {
       "product_id": "A123",
-      "name": "Kanvas Rem Updated2",
-      "category": "Aki",
-      "brand": "ABCDEFG",
-      "quantity": 8
-    },
-    {
-      "product_id": "JAL019",
-      "name": "Blindspot Mirror Motor",
-      "category": "Campuran",
-      "brand": "Loreal",
-      "quantity": 2482
-    },
-    {
-      "product_id": "MKL",
-      "name": "Ban Mobil",
+      "name": "Ban Motor 90/90-14",
       "category": "Ban",
-      "brand": "Honda",
-      "quantity": 152
+      "brand": "IRC",
+      "quantity": 4004
+    },
+    {
+      "product_id": "1790064784",
+      "name": "Oli Transmisi ATF 1L",
+      "category": "Oli",
+      "brand": "Total",
+      "quantity": 895
+    },
+    {
+      "product_id": "9690023876",
+      "name": "Filter Udara Motor",
+      "category": "SpareParts Motor",
+      "brand": "Ferrox",
+      "quantity": 696
+    },
+    {
+      "product_id": "6222311088",
+      "name": "Lampu LED H4",
+      "category": "SpareParts Mobil",
+      "brand": "Philips",
+      "quantity": 4996
     }
   ],
   "users": [
@@ -150,10 +178,10 @@
       "ekspedisi_id": 1,
       "product": {
         "product_id": "A123",
-        "name": "Kanvas Rem Updated2",
-        "category": "Aki",
-        "brand": "ABCDEFG",
-        "quantity": 8
+        "name": "Ban Motor 90/90-14",
+        "category": "Ban",
+        "brand": "IRC",
+        "quantity": 4004
       },
       "qty": 10,
       "purchase_price": 20.0,
@@ -165,10 +193,10 @@
       "ekspedisi_id": 2,
       "product": {
         "product_id": "KR022",
-        "name": "Kampas Rem Mobil",
-        "category": "SpareParts Motor",
-        "brand": "Pantene",
-        "quantity": 499
+        "name": "Kampas Rem Depan",
+        "category": "SpareParts Mobil",
+        "brand": "Bendix",
+        "quantity": 995
       },
       "qty": 500,
       "purchase_price": 500000.0,
@@ -177,43 +205,13 @@
       "date": "2025-04-16T15:20:01.918072+00:00"
     },
     {
-      "ekspedisi_id": 3,
-      "product": {
-        "product_id": "MVK25",
-        "name": "Aksesoris Mobil",
-        "category": "SpareParts Mobil",
-        "brand": "Laneige",
-        "quantity": 2503
-      },
-      "qty": 2505,
-      "purchase_price": 500000.0,
-      "sale_price": 580000.0,
-      "in_or_out": 1,
-      "date": "2025-04-16T17:35:01.112268+00:00"
-    },
-    {
-      "ekspedisi_id": 4,
-      "product": {
-        "product_id": "JAL019",
-        "name": "Blindspot Mirror Motor",
-        "category": "Campuran",
-        "brand": "Loreal",
-        "quantity": 2482
-      },
-      "qty": 2524,
-      "purchase_price": 125000.0,
-      "sale_price": 140000.0,
-      "in_or_out": 1,
-      "date": "2025-04-16T17:38:48.418111+00:00"
-    },
-    {
       "ekspedisi_id": 5,
       "product": {
         "product_id": "BHJK",
-        "name": "Aksesoris Motor",
-        "category": "Oli",
-        "brand": "Calvin Klein",
-        "quantity": 68
+        "name": "Aki Kering 12V 5Ah",
+        "category": "Aki",
+        "brand": "GS Astra",
+        "quantity": 3063
       },
       "qty": 100,
       "purchase_price": 660000.0,
@@ -222,19 +220,154 @@
       "date": "2025-04-16T18:50:42.458955+00:00"
     },
     {
-      "ekspedisi_id": 9,
+      "ekspedisi_id": 10,
       "product": {
-        "product_id": "MKL",
-        "name": "Ban Mobil",
-        "category": "Ban",
-        "brand": "Honda",
-        "quantity": 152
+        "product_id": "3190050198",
+        "name": "Radiator Coolant 1L",
+        "category": "SpareParts Mobil",
+        "brand": "Prestone",
+        "quantity": 8998
       },
-      "qty": 200,
-      "purchase_price": 6000000.0,
-      "sale_price": 6200000.0,
+      "qty": 900,
+      "purchase_price": 50000.0,
+      "sale_price": 65000.0,
       "in_or_out": 1,
-      "date": "2025-04-19T09:26:17.467964+00:00"
+      "date": "2025-04-26T08:45:07.588959+00:00"
+    },
+    {
+      "ekspedisi_id": 11,
+      "product": {
+        "product_id": "6222317143",
+        "name": "Shockbreaker Belakang",
+        "category": "SpareParts Mobil",
+        "brand": "Kayaba",
+        "quantity": 3999
+      },
+      "qty": 400,
+      "purchase_price": 400000.0,
+      "sale_price": 520000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T08:49:43.234456+00:00"
+    },
+    {
+      "ekspedisi_id": 12,
+      "product": {
+        "product_id": "6222311088",
+        "name": "Lampu LED H4",
+        "category": "SpareParts Mobil",
+        "brand": "Philips",
+        "quantity": 4996
+      },
+      "qty": 5000,
+      "purchase_price": 125000.0,
+      "sale_price": 195000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T08:53:34.677352+00:00"
+    },
+    {
+      "ekspedisi_id": 13,
+      "product": {
+        "product_id": "A123",
+        "name": "Ban Motor 90/90-14",
+        "category": "Ban",
+        "brand": "IRC",
+        "quantity": 4004
+      },
+      "qty": 4000,
+      "purchase_price": 300000.0,
+      "sale_price": 385000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T08:55:38.601155+00:00"
+    },
+    {
+      "ekspedisi_id": 14,
+      "product": {
+        "product_id": "BHJK",
+        "name": "Aki Kering 12V 5Ah",
+        "category": "Aki",
+        "brand": "GS Astra",
+        "quantity": 3063
+      },
+      "qty": 3000,
+      "purchase_price": 280000.0,
+      "sale_price": 350000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T08:56:25.279945+00:00"
+    },
+    {
+      "ekspedisi_id": 15,
+      "product": {
+        "product_id": "KR022",
+        "name": "Kampas Rem Depan",
+        "category": "SpareParts Mobil",
+        "brand": "Bendix",
+        "quantity": 995
+      },
+      "qty": 500,
+      "purchase_price": 170000.0,
+      "sale_price": 205000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T08:57:45.766038+00:00"
+    },
+    {
+      "ekspedisi_id": 16,
+      "product": {
+        "product_id": "5190032871",
+        "name": "Busi Iridium",
+        "category": "SpareParts Motor",
+        "brand": "NGK",
+        "quantity": 297
+      },
+      "qty": 300,
+      "purchase_price": 100000.0,
+      "sale_price": 140000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T09:03:30.198096+00:00"
+    },
+    {
+      "ekspedisi_id": 17,
+      "product": {
+        "product_id": "1790064784",
+        "name": "Oli Transmisi ATF 1L",
+        "category": "Oli",
+        "brand": "Total",
+        "quantity": 895
+      },
+      "qty": 900,
+      "purchase_price": 95000.0,
+      "sale_price": 145000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T09:04:34.773609+00:00"
+    },
+    {
+      "ekspedisi_id": 18,
+      "product": {
+        "product_id": "9690023876",
+        "name": "Filter Udara Motor",
+        "category": "SpareParts Motor",
+        "brand": "Ferrox",
+        "quantity": 696
+      },
+      "qty": 700,
+      "purchase_price": 160000.0,
+      "sale_price": 200000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T09:05:13.335441+00:00"
+    },
+    {
+      "ekspedisi_id": 19,
+      "product": {
+        "product_id": "7490032872",
+        "name": "Aki Kering 12V 7Ah",
+        "category": "Aki",
+        "brand": "Yuasa",
+        "quantity": 2498
+      },
+      "qty": 2500,
+      "purchase_price": 310000.0,
+      "sale_price": 400000.0,
+      "in_or_out": 1,
+      "date": "2025-04-26T09:06:16.302358+00:00"
     }
   ],
   "invoices": [
@@ -248,26 +381,13 @@
       "status": "Pending",
       "items": [
         {
-          "detail_id": 8,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 250000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
           "detail_id": 9,
           "product": {
             "product_id": "BHJK",
-            "name": "Aksesoris Motor",
-            "category": "Oli",
-            "brand": "Calvin Klein",
-            "quantity": 68
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
           "price": 290000.0,
           "quantity": 4,
@@ -283,32 +403,55 @@
       "car_number": "B1234XYZ",
       "discount": 10000.0,
       "status": "Partial Paid",
+      "items": []
+    },
+    {
+      "invoice_id": 42,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Unpaid",
+      "car_number": "K 9987 K",
+      "discount": 0.0,
+      "status": "Unpaid",
       "items": [
         {
-          "detail_id": 16,
+          "detail_id": 129,
           "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
+            "product_id": "9690023876",
+            "name": "Filter Udara Motor",
+            "category": "SpareParts Motor",
+            "brand": "Ferrox",
+            "quantity": 696
           },
-          "price": 140000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
+          "price": 200000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
         },
         {
-          "detail_id": 17,
+          "detail_id": 130,
           "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
+            "product_id": "BHJK",
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
+          "price": 350000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 131,
+          "product": {
+            "product_id": "A123",
+            "name": "Ban Motor 90/90-14",
+            "category": "Ban",
+            "brand": "IRC",
+            "quantity": 4004
+          },
+          "price": 385000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
         }
       ]
     },
@@ -320,34 +463,7 @@
       "car_number": "B1234XYZ",
       "discount": 10000.0,
       "status": "Partial Paid",
-      "items": [
-        {
-          "detail_id": 24,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 140000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
-          "detail_id": 25,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 2,
@@ -359,87 +475,13 @@
       "status": "Partial Payment",
       "items": [
         {
-          "detail_id": 2,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 24000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
           "detail_id": 3,
           "product": {
             "product_id": "BHJK",
-            "name": "Aksesoris Motor",
-            "category": "Oli",
-            "brand": "Calvin Klein",
-            "quantity": 68
-          },
-          "price": 24000.0,
-          "quantity": 4,
-          "discount_per_item": 1000.0
-        }
-      ]
-    },
-    {
-      "invoice_id": 1,
-      "date": "2025-04-17",
-      "amount_paid": 40000.0,
-      "payment_method": "Cash",
-      "car_number": "B1234XYZ",
-      "discount": 10000.0,
-      "status": "Pending",
-      "items": [
-        {
-          "detail_id": 1,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 24000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        }
-      ]
-    },
-    {
-      "invoice_id": 4,
-      "date": "2025-04-17",
-      "amount_paid": 90000.0,
-      "payment_method": "Cash",
-      "car_number": "B1234XYZ",
-      "discount": 10000.0,
-      "status": "Pending",
-      "items": [
-        {
-          "detail_id": 6,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 24000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
-          "detail_id": 7,
-          "product": {
-            "product_id": "BHJK",
-            "name": "Aksesoris Motor",
-            "category": "Oli",
-            "brand": "Calvin Klein",
-            "quantity": 68
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
           "price": 24000.0,
           "quantity": 4,
@@ -457,26 +499,13 @@
       "status": "Pending",
       "items": [
         {
-          "detail_id": 12,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 250000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
           "detail_id": 13,
           "product": {
             "product_id": "BHJK",
-            "name": "Aksesoris Motor",
-            "category": "Oli",
-            "brand": "Calvin Klein",
-            "quantity": 68
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
           "price": 290000.0,
           "quantity": 4,
@@ -492,31 +521,41 @@
       "car_number": "B 1234 XYZ",
       "discount": 20000.0,
       "status": "Partial Payment",
+      "items": []
+    },
+    {
+      "invoice_id": 39,
+      "date": "2025-04-26",
+      "amount_paid": 598000.0,
+      "payment_method": "Cash",
+      "car_number": "JKL",
+      "discount": 0.0,
+      "status": "Full Payment",
       "items": [
         {
-          "detail_id": 42,
+          "detail_id": 126,
           "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
+            "product_id": "5190032871",
+            "name": "Busi Iridium",
+            "category": "SpareParts Motor",
+            "brand": "NGK",
+            "quantity": 297
           },
-          "price": 140000.0,
-          "quantity": 2,
+          "price": 300000.0,
+          "quantity": 1,
           "discount_per_item": 1000.0
         },
         {
-          "detail_id": 43,
+          "detail_id": 134,
           "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
+            "product_id": "6222311088",
+            "name": "Lampu LED H4",
+            "category": "SpareParts Mobil",
+            "brand": "Philips",
+            "quantity": 4996
           },
-          "price": 6200000.0,
-          "quantity": 3,
+          "price": 300000.0,
+          "quantity": 1,
           "discount_per_item": 1000.0
         }
       ]
@@ -531,26 +570,13 @@
       "status": "Partial Payment",
       "items": [
         {
-          "detail_id": 14,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 250000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
           "detail_id": 15,
           "product": {
             "product_id": "BHJK",
-            "name": "Aksesoris Motor",
-            "category": "Oli",
-            "brand": "Calvin Klein",
-            "quantity": 68
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
           "price": 290000.0,
           "quantity": 4,
@@ -571,36 +597,23 @@
           "detail_id": 46,
           "product": {
             "product_id": "KR022",
-            "name": "Kampas Rem Mobil",
-            "category": "SpareParts Motor",
-            "brand": "Pantene",
-            "quantity": 499
+            "name": "Kampas Rem Depan",
+            "category": "SpareParts Mobil",
+            "brand": "Bendix",
+            "quantity": 995
           },
           "price": 550000.0,
           "quantity": 1,
           "discount_per_item": 0.0
         },
         {
-          "detail_id": 47,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 0.0
-        },
-        {
           "detail_id": 48,
           "product": {
             "product_id": "BHJK",
-            "name": "Aksesoris Motor",
-            "category": "Oli",
-            "brand": "Calvin Klein",
-            "quantity": 68
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
           "price": 700000.0,
           "quantity": 4,
@@ -616,21 +629,7 @@
       "car_number": "B 1339 CC",
       "discount": 0.0,
       "status": "Partially Paid",
-      "items": [
-        {
-          "detail_id": 49,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6300000.0,
-          "quantity": 3,
-          "discount_per_item": 25000.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 15,
@@ -650,21 +649,7 @@
       "car_number": "B 1339 MVK",
       "discount": 0.0,
       "status": "Partial Payment",
-      "items": [
-        {
-          "detail_id": 50,
-          "product": {
-            "product_id": "MVK25",
-            "name": "Aksesoris Mobil",
-            "category": "SpareParts Mobil",
-            "brand": "Laneige",
-            "quantity": 2503
-          },
-          "price": 580000.0,
-          "quantity": 3,
-          "discount_per_item": 0.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 14,
@@ -674,34 +659,7 @@
       "car_number": "B 1235 XYZ",
       "discount": 10000.0,
       "status": "Partial Payment",
-      "items": [
-        {
-          "detail_id": 26,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 140000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
-          "detail_id": 27,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 16,
@@ -711,34 +669,7 @@
       "car_number": "B 1235 XYZ",
       "discount": 10000.0,
       "status": "Partial Payment",
-      "items": [
-        {
-          "detail_id": 32,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 140000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
-          "detail_id": 33,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 19,
@@ -748,34 +679,7 @@
       "car_number": "B 1237 XYZ",
       "discount": 30000.0,
       "status": "Partial Payment",
-      "items": [
-        {
-          "detail_id": 40,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 140000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
-          "detail_id": 41,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 17,
@@ -785,34 +689,7 @@
       "car_number": "B 1235 XYZ",
       "discount": 10000.0,
       "status": "Partial Payment",
-      "items": [
-        {
-          "detail_id": 34,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 140000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
-          "detail_id": 35,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 18,
@@ -822,34 +699,7 @@
       "car_number": "B1234XYZ",
       "discount": 10000.0,
       "status": "Partial Paid",
-      "items": [
-        {
-          "detail_id": 36,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 140000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
-          "detail_id": 37,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
-        }
-      ]
+      "items": []
     },
     {
       "invoice_id": 21,
@@ -859,32 +709,191 @@
       "car_number": "B 1234 XYZ",
       "discount": 10000.0,
       "status": "Partial Paid",
+      "items": []
+    },
+    {
+      "invoice_id": 26,
+      "date": "2025-04-24",
+      "amount_paid": 12570000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1339 CC",
+      "discount": 10000.0,
+      "status": "Partially Paid",
       "items": [
         {
-          "detail_id": 44,
+          "detail_id": 99,
           "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
+            "product_id": "KR022",
+            "name": "Kampas Rem Depan",
+            "category": "SpareParts Mobil",
+            "brand": "Bendix",
+            "quantity": 995
           },
-          "price": 140000.0,
-          "quantity": 2,
+          "price": 550000.0,
+          "quantity": 1,
           "discount_per_item": 1000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 31,
+      "date": "2025-04-25",
+      "amount_paid": 2000000.0,
+      "payment_method": "Cash",
+      "car_number": "M 2505 VK",
+      "discount": 0.0,
+      "status": "Partially Paid",
+      "items": []
+    },
+    {
+      "invoice_id": 34,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Unpaid",
+      "car_number": "BC 4456 PP",
+      "discount": 15000.0,
+      "status": "Unpaid",
+      "items": [
+        {
+          "detail_id": 113,
+          "product": {
+            "product_id": "7490032872",
+            "name": "Aki Kering 12V 7Ah",
+            "category": "Aki",
+            "brand": "Yuasa",
+            "quantity": 2498
+          },
+          "price": 400000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
         },
         {
-          "detail_id": 45,
+          "detail_id": 114,
           "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
+            "product_id": "KR022",
+            "name": "Kampas Rem Depan",
+            "category": "SpareParts Mobil",
+            "brand": "Bendix",
+            "quantity": 995
           },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
+          "price": 205000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 115,
+          "product": {
+            "product_id": "A123",
+            "name": "Ban Motor 90/90-14",
+            "category": "Ban",
+            "brand": "IRC",
+            "quantity": 4004
+          },
+          "price": 385000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 116,
+          "product": {
+            "product_id": "5190032871",
+            "name": "Busi Iridium",
+            "category": "SpareParts Motor",
+            "brand": "NGK",
+            "quantity": 297
+          },
+          "price": 140000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 132,
+          "product": {
+            "product_id": "1790064784",
+            "name": "Oli Transmisi ATF 1L",
+            "category": "Oli",
+            "brand": "Total",
+            "quantity": 895
+          },
+          "price": 145000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 133,
+          "product": {
+            "product_id": "9690023876",
+            "name": "Filter Udara Motor",
+            "category": "SpareParts Motor",
+            "brand": "Ferrox",
+            "quantity": 696
+          },
+          "price": 200000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 32,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Unpaid",
+      "car_number": "B 1339 CC",
+      "discount": 50000.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 107,
+          "product": {
+            "product_id": "A123",
+            "name": "Ban Motor 90/90-14",
+            "category": "Ban",
+            "brand": "IRC",
+            "quantity": 4004
+          },
+          "price": 385000.0,
+          "quantity": 2,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 108,
+          "product": {
+            "product_id": "6222311088",
+            "name": "Lampu LED H4",
+            "category": "SpareParts Mobil",
+            "brand": "Philips",
+            "quantity": 4996
+          },
+          "price": 195000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 109,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
+          },
+          "price": 350000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 110,
+          "product": {
+            "product_id": "5190032871",
+            "name": "Busi Iridium",
+            "category": "SpareParts Motor",
+            "brand": "NGK",
+            "quantity": 297
+          },
+          "price": 140000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
         }
       ]
     },
@@ -898,26 +907,13 @@
       "status": "Partial Payment",
       "items": [
         {
-          "detail_id": 10,
-          "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
-          },
-          "price": 250000.0,
-          "quantity": 2,
-          "discount_per_item": 1000.0
-        },
-        {
           "detail_id": 11,
           "product": {
             "product_id": "BHJK",
-            "name": "Aksesoris Motor",
-            "category": "Oli",
-            "brand": "Calvin Klein",
-            "quantity": 68
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
           "price": 290000.0,
           "quantity": 4,
@@ -938,64 +934,294 @@
           "detail_id": 51,
           "product": {
             "product_id": "A123",
-            "name": "Kanvas Rem Updated2",
-            "category": "Aki",
-            "brand": "ABCDEFG",
-            "quantity": 8
+            "name": "Ban Motor 90/90-14",
+            "category": "Ban",
+            "brand": "IRC",
+            "quantity": 4004
           },
           "price": 40000.0,
           "quantity": 2,
-          "discount_per_item": 0.0
-        },
-        {
-          "detail_id": 52,
-          "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
-          },
-          "price": 6200000.0,
-          "quantity": 3,
           "discount_per_item": 0.0
         }
       ]
     },
     {
-      "invoice_id": 26,
-      "date": "2025-04-24",
-      "amount_paid": 12570000.0,
-      "payment_method": "Transfer Bank",
-      "car_number": "B 1339 CC",
+      "invoice_id": 33,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Cash",
+      "car_number": "C 1272 CC",
       "discount": 10000.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 111,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
+          },
+          "price": 350000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 112,
+          "product": {
+            "product_id": "3190050198",
+            "name": "Radiator Coolant 1L",
+            "category": "SpareParts Mobil",
+            "brand": "Prestone",
+            "quantity": 8998
+          },
+          "price": 65000.0,
+          "quantity": 2,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 28,
+      "date": "2025-04-24",
+      "amount_paid": 26000000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "BB 1339 CC",
+      "discount": 35000.0,
+      "status": "Partially Paid",
+      "items": []
+    },
+    {
+      "invoice_id": 35,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Unpaid",
+      "car_number": "P 9908 MK",
+      "discount": 0.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 117,
+          "product": {
+            "product_id": "1790064784",
+            "name": "Oli Transmisi ATF 1L",
+            "category": "Oli",
+            "brand": "Total",
+            "quantity": 895
+          },
+          "price": 145000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 118,
+          "product": {
+            "product_id": "KR022",
+            "name": "Kampas Rem Depan",
+            "category": "SpareParts Mobil",
+            "brand": "Bendix",
+            "quantity": 995
+          },
+          "price": 205000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 119,
+          "product": {
+            "product_id": "BHJK",
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
+          },
+          "price": 350000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 27,
+      "date": "2025-04-24",
+      "amount_paid": 12900000.0,
+      "payment_method": "Transfer Bank",
+      "car_number": "B 1339 JL",
+      "discount": 120000.0,
       "status": "Partially Paid",
       "items": [
         {
-          "detail_id": 53,
+          "detail_id": 89,
           "product": {
-            "product_id": "JAL019",
-            "name": "Blindspot Mirror Motor",
-            "category": "Campuran",
-            "brand": "Loreal",
-            "quantity": 2482
+            "product_id": "BHJK",
+            "name": "Aki Kering 12V 5Ah",
+            "category": "Aki",
+            "brand": "GS Astra",
+            "quantity": 3063
           },
           "price": 140000.0,
+          "quantity": 1,
+          "discount_per_item": 700000.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 36,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Cash",
+      "car_number": "M 9908 JL",
+      "discount": 0.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 120,
+          "product": {
+            "product_id": "6222311088",
+            "name": "Lampu LED H4",
+            "category": "SpareParts Mobil",
+            "brand": "Philips",
+            "quantity": 4996
+          },
+          "price": 195000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 37,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Unpaid",
+      "car_number": "K 9909 JJ",
+      "discount": 0.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 121,
+          "product": {
+            "product_id": "1790064784",
+            "name": "Oli Transmisi ATF 1L",
+            "category": "Oli",
+            "brand": "Total",
+            "quantity": 895
+          },
+          "price": 145000.0,
           "quantity": 2,
-          "discount_per_item": 1000.0
+          "discount_per_item": 0.0
         },
         {
-          "detail_id": 54,
+          "detail_id": 122,
           "product": {
-            "product_id": "MKL",
-            "name": "Ban Mobil",
-            "category": "Ban",
-            "brand": "Honda",
-            "quantity": 152
+            "product_id": "9690023876",
+            "name": "Filter Udara Motor",
+            "category": "SpareParts Motor",
+            "brand": "Ferrox",
+            "quantity": 696
           },
-          "price": 6200000.0,
-          "quantity": 3,
-          "discount_per_item": 1000.0
+          "price": 200000.0,
+          "quantity": 2,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 123,
+          "product": {
+            "product_id": "6222311088",
+            "name": "Lampu LED H4",
+            "category": "SpareParts Mobil",
+            "brand": "Philips",
+            "quantity": 4996
+          },
+          "price": 195000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        },
+        {
+          "detail_id": 124,
+          "product": {
+            "product_id": "6222317143",
+            "name": "Shockbreaker Belakang",
+            "category": "SpareParts Mobil",
+            "brand": "Kayaba",
+            "quantity": 3999
+          },
+          "price": 520000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 38,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Unpaid",
+      "car_number": "MVK",
+      "discount": 0.0,
+      "status": "Pending",
+      "items": [
+        {
+          "detail_id": 125,
+          "product": {
+            "product_id": "1790064784",
+            "name": "Oli Transmisi ATF 1L",
+            "category": "Oli",
+            "brand": "Total",
+            "quantity": 895
+          },
+          "price": 145000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 40,
+      "date": "2025-04-26",
+      "amount_paid": 50000.0,
+      "payment_method": "Cash",
+      "car_number": "ojkj",
+      "discount": 0.0,
+      "status": "Partially Paid",
+      "items": [
+        {
+          "detail_id": 127,
+          "product": {
+            "product_id": "KR022",
+            "name": "Kampas Rem Depan",
+            "category": "SpareParts Mobil",
+            "brand": "Bendix",
+            "quantity": 995
+          },
+          "price": 205000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
+        }
+      ]
+    },
+    {
+      "invoice_id": 41,
+      "date": "2025-04-26",
+      "amount_paid": 0.0,
+      "payment_method": "Unpaid",
+      "car_number": "jkajsd",
+      "discount": 0.0,
+      "status": "Unpaid",
+      "items": [
+        {
+          "detail_id": 128,
+          "product": {
+            "product_id": "7490032872",
+            "name": "Aki Kering 12V 7Ah",
+            "category": "Aki",
+            "brand": "Yuasa",
+            "quantity": 2498
+          },
+          "price": 400000.0,
+          "quantity": 1,
+          "discount_per_item": 0.0
         }
       ]
     }
@@ -1116,6 +1342,25 @@
       "status": "Unpaid"
     },
     {
+      "daily_sales_id": 35,
+      "invoice": {
+        "invoice_id": 26,
+        "amount_paid": 12570000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 12,
+        "name": "Ryan Prakoso",
+        "role": "Mechanic",
+        "hired_date": "2025-02-07",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-24",
+      "omzet": 12570000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
       "daily_sales_id": 2,
       "invoice": {
         "invoice_id": 2,
@@ -1135,40 +1380,21 @@
       "status": "Unpaid"
     },
     {
-      "daily_sales_id": 1,
+      "daily_sales_id": 45,
       "invoice": {
-        "invoice_id": 1,
-        "amount_paid": 40000.0,
-        "status": "Pending"
+        "invoice_id": 31,
+        "amount_paid": 2000000.0,
+        "status": "Partially Paid"
       },
       "employee": {
-        "employee_id": 1,
-        "name": "Eka Ralph Lauren",
-        "role": "Sales",
-        "hired_date": "2023-12-01",
-        "notes": "Freelance sales selama musim promosi"
+        "employee_id": 11,
+        "name": "Zaky Farhan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
       },
-      "date": "2025-04-17",
-      "omzet": 0.0,
-      "paid": 0.0,
-      "status": "Unpaid"
-    },
-    {
-      "daily_sales_id": 4,
-      "invoice": {
-        "invoice_id": 4,
-        "amount_paid": 90000.0,
-        "status": "Pending"
-      },
-      "employee": {
-        "employee_id": 1,
-        "name": "Eka Ralph Lauren",
-        "role": "Sales",
-        "hired_date": "2023-12-01",
-        "notes": "Freelance sales selama musim promosi"
-      },
-      "date": "2025-04-17",
-      "omzet": 0.0,
+      "date": "2025-04-25",
+      "omzet": 2000000.0,
       "paid": 0.0,
       "status": "Unpaid"
     },
@@ -1211,6 +1437,25 @@
       "status": "Unpaid"
     },
     {
+      "daily_sales_id": 46,
+      "invoice": {
+        "invoice_id": 32,
+        "amount_paid": 0.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
       "daily_sales_id": 32,
       "invoice": {
         "invoice_id": 24,
@@ -1226,6 +1471,25 @@
       },
       "date": "2025-04-23",
       "omzet": 20000.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 47,
+      "invoice": {
+        "invoice_id": 33,
+        "amount_paid": 0.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 11,
+        "name": "Zaky Farhan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
       "paid": 0.0,
       "status": "Paid"
     },
@@ -1249,6 +1513,25 @@
       "status": "Paid"
     },
     {
+      "daily_sales_id": 49,
+      "invoice": {
+        "invoice_id": 35,
+        "amount_paid": 0.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 9,
+        "name": "Cindy Mareta",
+        "role": "Sales",
+        "hired_date": "2025-03-03",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
       "daily_sales_id": 8,
       "invoice": {
         "invoice_id": 8,
@@ -1266,6 +1549,25 @@
       "omzet": 400000.0,
       "paid": 0.0,
       "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 50,
+      "invoice": {
+        "invoice_id": 36,
+        "amount_paid": 0.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 2,
+        "name": "Kenzu Christian Dior",
+        "role": "Mechanic",
+        "hired_date": "2024-05-22",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Paid"
     },
     {
       "daily_sales_id": 6,
@@ -1401,11 +1703,30 @@
       "status": "Unpaid"
     },
     {
-      "daily_sales_id": 35,
+      "daily_sales_id": 51,
       "invoice": {
-        "invoice_id": 26,
-        "amount_paid": 12570000.0,
-        "status": "Partially Paid"
+        "invoice_id": 37,
+        "amount_paid": 0.0,
+        "status": "Pending"
+      },
+      "employee": {
+        "employee_id": 8,
+        "name": "Dhana Lalapan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-05",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 52,
+      "invoice": {
+        "invoice_id": 38,
+        "amount_paid": 0.0,
+        "status": "Pending"
       },
       "employee": {
         "employee_id": 12,
@@ -1414,16 +1735,130 @@
         "hired_date": "2025-02-07",
         "notes": "Pertama kali kerja"
       },
-      "date": "2025-04-24",
-      "omzet": 12570000.0,
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 54,
+      "invoice": {
+        "invoice_id": 40,
+        "amount_paid": 50000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 1,
+        "name": "Eka Ralph Lauren",
+        "role": "Sales",
+        "hired_date": "2023-12-01",
+        "notes": "Freelance sales selama musim promosi"
+      },
+      "date": "2025-04-26",
+      "omzet": 50000.0,
       "paid": 0.0,
       "status": "Unpaid"
     },
     {
-      "daily_sales_id": 36,
+      "daily_sales_id": 55,
       "invoice": {
-        "invoice_id": 26,
-        "amount_paid": 12570000.0,
+        "invoice_id": 41,
+        "amount_paid": 0.0,
+        "status": "Unpaid"
+      },
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 56,
+      "invoice": {
+        "invoice_id": 42,
+        "amount_paid": 0.0,
+        "status": "Unpaid"
+      },
+      "employee": {
+        "employee_id": 6,
+        "name": "Sabrina Putri",
+        "role": "Sales",
+        "hired_date": "2025-04-10",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Paid"
+    },
+    {
+      "daily_sales_id": 39,
+      "invoice": {
+        "invoice_id": 28,
+        "amount_paid": 26000000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 9,
+        "name": "Cindy Mareta",
+        "role": "Sales",
+        "hired_date": "2025-03-03",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-24",
+      "omzet": 26000000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 40,
+      "invoice": {
+        "invoice_id": 28,
+        "amount_paid": 26000000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 11,
+        "name": "Zaky Farhan",
+        "role": "Mechanic",
+        "hired_date": "2025-04-12",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-24",
+      "omzet": 26000000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 38,
+      "invoice": {
+        "invoice_id": 27,
+        "amount_paid": 12900000.0,
+        "status": "Partially Paid"
+      },
+      "employee": {
+        "employee_id": 10,
+        "name": "Reina Salma",
+        "role": "Sales",
+        "hired_date": "2025-02-01",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-24",
+      "omzet": 12900000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 37,
+      "invoice": {
+        "invoice_id": 27,
+        "amount_paid": 12900000.0,
         "status": "Partially Paid"
       },
       "employee": {
@@ -1434,7 +1869,45 @@
         "notes": "Pertama kali kerja"
       },
       "date": "2025-04-24",
-      "omzet": 12570000.0,
+      "omzet": 12900000.0,
+      "paid": 0.0,
+      "status": "Unpaid"
+    },
+    {
+      "daily_sales_id": 48,
+      "invoice": {
+        "invoice_id": 34,
+        "amount_paid": 0.0,
+        "status": "Unpaid"
+      },
+      "employee": {
+        "employee_id": 9,
+        "name": "Cindy Mareta",
+        "role": "Sales",
+        "hired_date": "2025-03-03",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 0.0,
+      "paid": 0.0,
+      "status": "Fully Paid"
+    },
+    {
+      "daily_sales_id": 53,
+      "invoice": {
+        "invoice_id": 39,
+        "amount_paid": 598000.0,
+        "status": "Full Payment"
+      },
+      "employee": {
+        "employee_id": 10,
+        "name": "Reina Salma",
+        "role": "Sales",
+        "hired_date": "2025-02-01",
+        "notes": "Pertama kali kerja"
+      },
+      "date": "2025-04-26",
+      "omzet": 598000.0,
       "paid": 0.0,
       "status": "Unpaid"
     }
