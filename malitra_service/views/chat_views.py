@@ -35,7 +35,7 @@ llm_for_prep = ChatOpenAI(
 # Spell-corrector for English question
 spell_fix_prompt = PromptTemplate.from_template(
     """
-Fix the spelling in this English question, preserving meaning:
+Fix the spelling in this English and/or question, preserving meaning:
 
 {question}
 
@@ -63,7 +63,7 @@ class ChatView(APIView):
         vectordb = Chroma(persist_directory="./db", embedding_function=emb)
 
         # 4) Retrieve with higher k
-        retriever = vectordb.as_retriever(search_kwargs={"k": 12})
+        retriever = vectordb.as_retriever(search_kwargs={"k": 6})
 
         # 5) Map-reduce QA
         llm = ChatOpenAI(

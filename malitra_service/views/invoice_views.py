@@ -14,7 +14,7 @@ class InvoiceListView(APIView):
 
     def get(self, request, *args, **kwargs):
         try:
-            invoices = Invoice.objects.all()
+            invoices = Invoice.objects.exclude(invoice_status="Pending")
             result = []
 
             for invoice in invoices:
@@ -25,7 +25,7 @@ class InvoiceListView(APIView):
                 for item in items:
                     print(f"  - Product: {item.product.product_name}, Price: {item.price}, Discount/item: {item.discount_per_item}, Qty: {item.quantity}")
 
-                total_price = sum((item.price - item.discount_per_item) * item.quantity for item in items) - invoice.discount
+                total_price = sum((item.price * item.quantity) - item.discount_per_item for item in items) - invoice.discount
                 unpaid_amount = total_price - Decimal(invoice.amount_paid)
                 
                 related_daily_sales = DailySales.objects.filter(invoice=invoice).select_related('employee')
@@ -89,7 +89,7 @@ class InvoiceSummaryFilter(APIView):
             total_unpaid = 0
             for invoice in invoices:
                 items = ItemInInvoice.objects.filter(invoice_id=invoice)
-                total_price = sum((item.price - item.discount_per_item) * item.quantity for item in items)
+                total_price = sum((item.price * item.quantity) - item.discount_per_item for item in items)
                 unpaid = total_price - Decimal(invoice.amount_paid)
                 total_unpaid += unpaid if unpaid > 0 else 0
 

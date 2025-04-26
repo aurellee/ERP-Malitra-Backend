@@ -29,7 +29,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
         if items:
             total = sum(
-                (it['price'] - it['discount_per_item']) * it['quantity']
+                (it['price'] * it['quantity']) - it['discount_per_item']
                 for it in items
             ) - discount
             if amount_paid > total:
@@ -42,14 +42,14 @@ class InvoiceSerializer(serializers.ModelSerializer):
         """Recompute total_price, invoice_status, and return total_due."""
         items = ItemInInvoice.objects.filter(invoice=invoice)
         total_price = sum(
-            (i.price - i.discount_per_item) * i.quantity for i in items
+            (i.price * i.quantity) - i.discount_per_item for i in items
         )
         total_due = total_price - invoice.discount
-        invoice.invoice_status = (
-            "Full Payment" if invoice.amount_paid >= total_due
-            else "Partially Paid" if invoice.amount_paid > 0
-            else "Pending"
-        )
+        # invoice.invoice_status = (
+        #     "Full Payment" if invoice.amount_paid >= total_due
+        #     else "Partially Paid" if invoice.amount_paid > 0
+        #     else "Pending"
+        # )
         invoice.save()
         return total_due
 
@@ -163,10 +163,17 @@ class InvoiceSerializer(serializers.ModelSerializer):
         if sales_data is not None:
             for sale in sales_data:
                 # find the existing row (assumes one per employee/invoice)
-                ds = DailySales.objects.get(
-                    invoice=instance,
-                    employee_id=sale['employee']
-                )
+                ds_qs = DailySales.objects.filter(invoice=instance, employee_id=sale['employee'])
+
+                if ds_qs.count() > 1:
+                    raise serializers.ValidationError({
+                        "sales": f"Multiple DailySales entries found for employee {sale['employee']} and invoice {instance.invoice_id}."
+                    })
+
+                if ds_qs.exists():
+                    ds = ds_qs.first()
+                else:
+                    ds = DailySales(invoice=instance, employee_id=sale['employee'])
 
                 # 1) overwrite the omzet
                 ds.total_sales_omzet = Decimal(sale['total_sales_omzet'])
