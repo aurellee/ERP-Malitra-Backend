@@ -1,12 +1,13 @@
 from rest_framework import generics, status
 from rest_framework.views import APIView
-from malitra_service.serializers.invoice_serializers import InvoiceSerializer
+from malitra_service.serializers.invoice_serializers import InvoiceSerializer, serializers
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from malitra_service.models import Invoice, ItemInInvoice, DailySales, Employee, Product
 from rest_framework.response import Response
 from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from datetime import datetime
 from decimal import Decimal
+from rest_framework import viewsets
 
 # Create your views here.
 class InvoiceListView(APIView):
@@ -20,10 +21,10 @@ class InvoiceListView(APIView):
             for invoice in invoices:
                 items = ItemInInvoice.objects.filter(invoice=invoice)
                 
-                print(f"Invoice {invoice.invoice_id} has {items.count()} items")
+                # print(f"Invoice {invoice.invoice_id} has {items.count()} items")
 
-                for item in items:
-                    print(f"  - Product: {item.product.product_name}, Price: {item.price}, Discount/item: {item.discount_per_item}, Qty: {item.quantity}")
+                # for item in items:
+                    # print(f"  - Product: {item.product.product_name}, Price: {item.price}, Discount/item: {item.discount_per_item}, Qty: {item.quantity}")
 
                 total_price = sum((item.price * item.quantity) - item.discount_per_item for item in items) - invoice.discount
                 unpaid_amount = total_price - Decimal(invoice.amount_paid)
@@ -113,7 +114,7 @@ class InvoiceUpdate(generics.UpdateAPIView):
     serializer_class = InvoiceSerializer
     permission_classes = [AllowAny]
 
-    def get_object(self):
+    def get_object(self, serializer):
         inv_id = self.request.data.get('invoice_id')
         if not inv_id:
             raise serializers.ValidationError({"invoice_id":"Required"})
