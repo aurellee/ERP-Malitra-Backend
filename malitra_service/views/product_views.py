@@ -65,10 +65,35 @@ class ProductExist(APIView):
         product_id = request.data.get('product_id')
 
         if not product_id:
-            return Response({"status": 400, "error": "Product ID is required."}, status=400)
+            return Response(
+                {"status": 400, "error": "Product ID is required."},
+                status=400
+            )
 
-        exists = Product.objects.filter(product_id=product_id).exists()
-        return Response({"status": 200, "data": {"exists": exists}}, status=200)
+        qs = Product.objects.filter(product_id=product_id)
+
+        exists = qs.exists()
+
+        # If it exists, pull back the fields you want
+        product_data = {}
+        if exists:
+            product_data = qs.values(
+                "product_name",
+                "brand_name",
+                "category"
+            ).first()
+
+        return Response(
+            {
+                "status": 200,
+                "data": {
+                    "exists": exists,
+                    **({"product": product_data} if exists else {})
+                }
+            },
+            status=200
+        )
+
 
 class ProductListWithLatestPrices(APIView):
     permission_classes = [AllowAny]
