@@ -45,7 +45,7 @@ class DashboardOverviewView(APIView):
 
         # 5. Employees Count by Role
         sales_count = Employee.objects.filter(role__iexact="Sales").count()
-        mechanic_count = Employee.objects.filter(role__iexact="Mechanics").count()
+        mechanic_count = Employee.objects.filter(role__iexact="Mechanic").count()
 
         data = {
             "total_transaction_today": total_transaction,
