@@ -3,7 +3,6 @@ from celery import shared_task
 from datetime import date, datetime, time
 
 import requests
-from malitra_service.utils.update_vectorstore_from_postgres import update_vectorstore_from_db
 from malitra_service.utils.export_data import export_data
 from .models import Employee, EmployeeAttendance
 from langchain_community.embeddings import OpenAIEmbeddings
@@ -14,11 +13,11 @@ from malitra_service.models import Invoice, Employee, Product
 from django.db import transaction
 
 # inisialisasi sekali
-EMB = OpenAIEmbeddings()
-VDB = Chroma(
-    persist_directory=os.getenv('CHROMA_DB_DIR'),
-    embedding_function=EMB,
-)
+# EMB = OpenAIEmbeddings()
+# VDB = Chroma(
+#     persist_directory=os.getenv('CHROMA_DB_DIR'),
+#     embedding_function=EMB,
+# )
 
 # @shared_task
 # def run_update_scripts_task():
@@ -54,10 +53,10 @@ VDB = Chroma(
 #     raise TypeError(f"Type {type(obj)} not serializable")
 
 
-@shared_task
-def refresh_vectorstore_task():
-    print("🔁 Running vectorstore refresh task...")
-    update_vectorstore_from_db()
+# @shared_task
+# def refresh_vectorstore_task():
+#     print("🔁 Running vectorstore refresh task...")
+#     update_vectorstore_from_db()
     
 
 @shared_task

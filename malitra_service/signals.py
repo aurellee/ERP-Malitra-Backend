@@ -7,8 +7,6 @@ from django.forms import model_to_dict
 from django_celery_beat.models import PeriodicTask, CrontabSchedule
 import json
 from django.dispatch import receiver
-
-from malitra_service.utils.update_vectorstore_from_postgres import update_vectorstore_from_db
 from .models import Invoice, Employee, Product
 
 watched_models = [Invoice, Employee, Product]
@@ -37,11 +35,11 @@ def setup_daily_attendance_task(sender, **kwargs):
         )
 
     hour_schedule, _ = CrontabSchedule.objects.get_or_create(minute="0", hour="*", day_of_week="*", day_of_month="*", month_of_year="*")
-    if not PeriodicTask.objects.filter(name="Check and Generate Missing Attendance").exists():
-        PeriodicTask.objects.create(
-            crontab=hour_schedule,
-            name="Check and Generate Missing Attendance",
-            task="malitra_service.tasks.check_and_generate_missing_attendance",
-            args=json.dumps([]),
-        )
+    # if not PeriodicTask.objects.filter(name="Check and Generate Missing Attendance").exists():
+    #     PeriodicTask.objects.create(
+    #         crontab=hour_schedule,
+    #         name="Check and Generate Missing Attendance",
+    #         task="malitra_service.tasks.check_and_generate_missing_attendance",
+    #         args=json.dumps([]),
+    #     )
 
