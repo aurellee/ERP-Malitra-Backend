@@ -1,9 +1,27 @@
 # malitra_service/signals.py
 
+from celery import shared_task
 from django.db.models.signals import post_migrate
 from django.dispatch import receiver
+from django.forms import model_to_dict
 from django_celery_beat.models import PeriodicTask, CrontabSchedule
 import json
+from django.dispatch import receiver
+from .models import Invoice, Employee, Product
+
+watched_models = [Invoice, Employee, Product]
+
+# def trigger_rebuild(sender, instance, **kwargs):
+#     print(f"⚡ Change detected on {sender.__name__}. Queuing export + rebuild...")
+#     print(f"⚡ SIGNAL FIRED: {sender.__name__} {instance.pk}")
+#     export_and_rebuild_task.delay()
+#     update_vectorstore_from_db()
+
+
+# for model in watched_models:
+#     post_save.connect(trigger_rebuild, sender=model)
+#     post_delete.connect(trigger_rebuild, sender=model)
+
 
 @receiver(post_migrate)
 def setup_daily_attendance_task(sender, **kwargs):
@@ -17,10 +35,11 @@ def setup_daily_attendance_task(sender, **kwargs):
         )
 
     hour_schedule, _ = CrontabSchedule.objects.get_or_create(minute="0", hour="*", day_of_week="*", day_of_month="*", month_of_year="*")
-    if not PeriodicTask.objects.filter(name="Check and Generate Missing Attendance").exists():
-        PeriodicTask.objects.create(
-            crontab=hour_schedule,
-            name="Check and Generate Missing Attendance",
-            task="malitra_service.tasks.check_and_generate_missing_attendance",
-            args=json.dumps([]),
-        )
+    # if not PeriodicTask.objects.filter(name="Check and Generate Missing Attendance").exists():
+    #     PeriodicTask.objects.create(
+    #         crontab=hour_schedule,
+    #         name="Check and Generate Missing Attendance",
+    #         task="malitra_service.tasks.check_and_generate_missing_attendance",
+    #         args=json.dumps([]),
+    #     )
+
