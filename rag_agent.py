@@ -78,6 +78,91 @@ def predefined_query(question):
         return 'SELECT COUNT(*) FROM "Invoice";'
     if "total omzet" in q and "sales" not in q:
         return 'SELECT SUM("amount_paid") FROM "Invoice";'
+    if "penjualan oli" in q and "jumlah" not in q:
+        return '''
+        SELECT SUM(ii.price * ii.quantity) AS total_oli_sales
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'oli';
+        '''
+    if "penjualan oli" in q and "jumlah" in q:
+        return '''
+        SELECT SUM(ii.quantity) AS total_oli_units_sold
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'oli'
+        AND ii.invoice_id IS NOT NULL;
+        '''
+    if "penjualan ban" in q and "jumlah" not in q:
+        return '''
+        SELECT SUM(ii.price * ii.quantity) AS total_ban_sales
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'ban';
+        '''
+    if "penjualan ban" in q and "jumlah" in q:
+        return '''
+        SELECT SUM(ii.quantity) AS total_ban_units_sold
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'ban';
+        '''
+    if "penjualan aki" in q and "jumlah" not in q:
+        return '''
+        SELECT SUM(ii.price * ii.quantity) AS total_aki_sales
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'aki';
+        '''
+    if "penjualan aki" in q and "jumlah" in q:
+        return '''
+        SELECT SUM(ii.quantity) AS total_aki_units_sold
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'aki';
+        '''
+    if "penjualan campuran" in q and "jumlah" not in q:
+        return '''
+        SELECT SUM(ii.price * ii.quantity) AS total_campuran_sales
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'campuran';
+        '''
+    if "penjualan campuran" in q and "jumlah" in q:
+        return '''
+        SELECT SUM(ii.quantity) AS total_campuran_units_sold
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'campuran';
+        '''
+    if "penjualan spareparts mobil" in q and "jumlah" not in q:
+        return '''
+        SELECT SUM(ii.price * ii.quantity) AS total_spareparts_mobil_sales
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'spareparts mobil';
+        '''
+    if "penjualan spareparts mobil" in q and "jumlah" in q:
+        return '''
+        SELECT SUM(ii.quantity) AS total_spareparts_mobil_units_sold
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'spareparts mobil';
+        '''
+    if "penjualan spareparts motor" in q and "jumlah" not in q:
+        return '''
+        SELECT SUM(ii.price * ii.quantity) AS total_spareparts_motor_sales
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'spareparts motor';
+        '''
+    if "penjualan spareparts motor" in q and "jumlah" in q:
+        return '''
+        SELECT SUM(ii.quantity) AS total_spareparts_motor_units_sold
+        FROM "ItemInInvoice" ii
+        JOIN "Product" p ON ii.product_id = p.product_id
+        WHERE LOWER(p.category) = 'spareparts motor';
+        '''
     if "total omzet sales ryan prakoso" in q:
         return 'SELECT SUM("amount_paid") FROM "Invoice" WHERE "sales" = \'Ryan Prakoso\' OR "mechanic" = \'Ryan Prakoso\';'
     if "jumlah employee" in q or "total employee" in q:
@@ -131,6 +216,14 @@ Result: {result}
 template_summary = ChatPromptTemplate.from_messages([system_summary, human_summary])
 chain_summary = template_summary | llm | StrOutputParser()
 
+# 4. General AI fallback
+system_general = SystemMessagePromptTemplate.from_template("""
+You are a smart assistant specialized in business and finance. Answer clearly and politely.
+""")
+human_general = HumanMessagePromptTemplate.from_template("{question}")
+chain_general = ChatPromptTemplate.from_messages([system_general, human_general]) | llm | StrOutputParser()
+
+
 import ast
 
 def summarize_answer(question, result):
@@ -138,7 +231,8 @@ def summarize_answer(question, result):
 
     # 1. Parse result string (e.g., '[(25,)]') menjadi list of tuple
     try:
-        parsed_result = ast.literal_eval(result) if isinstance(result, str) else result
+        parsed_result = ast.literal_eval(result) 
+        # if isinstance(result, str) else result
     except:
         parsed_result = result
 
@@ -159,13 +253,16 @@ def summarize_answer(question, result):
         return "Maaf, tidak ada data yang ditemukan untuk pertanyaan tersebut."
 
     # 4. Format angka
-    try:
-        if isinstance(value, (int, float)):
-            value = f"{int(value):,}".replace(",", ".")
-        else:
+    if any(keyword in question.lower() for keyword in ["penjualan", "omzet", "gaji", "harga"]) and "jumlah" not in question.lower():
+        try:
+            value = f"Rp {int(value):,}".replace(",", ".")
+        except:
             value = str(value)
-    except:
-        value = str(value)
+    else:
+        try:
+            value = f"{int(value):,}".replace(",", ".")
+        except:
+            value = str(value)
 
     q = question.lower()
     if "invoice" in q:
@@ -180,47 +277,177 @@ def summarize_answer(question, result):
         return f"Total gaji yang dibayarkan adalah Rp {value}."
     elif "bonus" in q:
         return f"Total bonus karyawan adalah Rp {value}."
+    elif "penjualan oli" in q and "jumlah" not in q:
+        badge = "🛢️"
+        return f"{badge} Total penjualan produk oli Anda: Rp {value}"
+    elif "penjualan ban" in q and "jumlah" not in q:
+        badge = "🛞"
+        return f"{badge} Total penjualan produk ban Anda: Rp {value}"
+    elif "penjualan campuran" in q and "jumlah" not in q:
+        return f"Total penjualan produk campuran Anda: Rp {value}"
+    elif "penjualan aki" in q and "jumlah" not in q:
+        badge = "🔋"
+        return f"{badge} Total penjualan produk aki Anda: Rp {value}"
+    elif "penjualan sparepart" in q and "mobil" in q and "jumlah" not in q:
+        badge = "🚗🔧"
+        return f"{badge} Total penjualan spareparts mobil Anda: Rp {value}"
+    elif "penjualan sparepart" in q and "motor" in q and "jumlah" not in q:
+        badge = "🏍️🔧"
+        return f"{badge} Total penjualan spareparts motor Anda: Rp {value}"
+    elif "produk" in q:
+        badge = "📦"
+        return f"{badge} Ada total {value} produk yang tercatat di database."
+    elif "invoice" in q:
+        badge = "🧾"
+        return f"{badge} Terdapat total {value} invoice di dalam database."
+    elif "employee" in q or "karyawan" in q:
+        badge = "👨‍💼"
+        return f"{badge} Ada {value} karyawan yang tercatat di database."
+    elif "omzet" in q or "sales" in q:
+        badge = "💰"
+        return f"{badge} Total omzet penjualan adalah sebesar {value}."
+    elif "gaji" in q:
+        badge = "🧾"
+        return f"{badge} Total gaji yang dibayarkan adalah {value}."
+    elif "bonus" in q:
+        badge = "🎁"
+        return f"{badge} Total bonus karyawan adalah {value}."
+    elif "absen" in q or "absensi" in q:
+        badge = "📋"
+        return f"{badge} Total absensi yang tercatat: {value}"
+    elif "penjualan oli" in q and "jumlah" in q:
+        return f"🛢️ Telah terjual {value} unit produk kategori oli dari semua invoice tercatat di sistem."
+    elif "penjualan ban" in q and "jumlah" in q:
+        return f"🛞 Telah terjual {value} unit produk kategori ban dari semua invoice tercatat di sistem."
+    elif "penjualan aki" in q and "jumlah" in q:
+        return f"🔋 Telah terjual {value} unit produk kategori aki dari semua invoice tercatat di sistem."
+    elif "penjualan campuran" in q and "jumlah" in q:
+        return f"Telah terjual {value} unit produk kategori campuran dari semua invoice tercatat di sistem."
+    elif "penjualan spareparts mobil" in q and "jumlah" in q:
+        return f"🚗🔧 Telah terjual {value} unit produk kategori spareparts mobil dari semua invoice tercatat di sistem."
+    elif "penjualan spareparts motor" in q and "jumlah" in q:
+        return f"🏍️🔧 Telah terjual {value} unit produk kategori spareparts motor dari semua invoice tercatat di sistem."
     else:
         return f"Hasilnya adalah {value}."
 
 # --- FULL CHAIN EXECUTION ---
+from typing import Any, Optional, List, Dict, Tuple, Union
+
+ERP_KEYWORDS = [
+    "produk", "invoice", "employee", "gaji", "bonus", "absensi", "sales", "omzet", "kategori",
+    "brand", "item", "dailysales", "ekspedisi", "payroll", "quantity", "status", "jumlah", "total",
+    "pengeluaran", "pemasukan", "transaksi"
+]
+
+def is_internal_erp_question(q: str) -> bool:
+    q = q.lower()
+    return any(word in q for word in ERP_KEYWORDS)
+
+# 1. Tambah deteksi pertanyaan yang minta perbandingan
+def is_comparative_question(question):
+    question = question.lower()
+    return any(keyword in question for keyword in ["bandingkan", "compare", "dibandingkan", "lebih baik", "lebih tinggi", "vs"])
+
+def extract_location_from_question(q: str) -> Optional[str]:
+    locations = [
+        "sulawesi utara", "sulawesi selatan", "daerah istimewa yogyakarta", "kepulauan riau",
+        "jakarta", "bandung", "surabaya", "bali", "yogyakarta",
+        "makassar", "medan", "sulawesi", "papua", "manado", "kalimantan", "sumatera", "jawa", "indonesia"
+    ]
+    q_lower = q.lower()
+    for loc in locations:
+        if loc in q_lower:
+            return loc.title()
+    return "Dunia"
+
+# 2. Fungsi untuk ambil jawaban dari general knowledge
+from langchain_core.prompts import ChatPromptTemplate
+
+def compare_with_general_knowledge(internal_summary, question, location):
+    # location = extract_location_from_question(question)
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", "You are an analytical assistant who compares company database insights with regional trends."),
+        ("human", f"""
+Pertanyaan pengguna: {question}
+
+Lokasi geografis yang dimaksud: {location}
+
+Data internal perusahaan:
+{internal_summary}
+
+Tolong bandingkan hasil data internal tersebut dengan tren penjualan di wilayah tersebut, menggunakan pengetahuanmu.
+
+Format jawaban:
+- 💡 Ringkasan internal
+- 🌍 Ringkasan tren eksternal wilayah {location}
+- ⚖️ Kesimpulan perbandingan
+""")
+    ])
+    chain = prompt | llm | StrOutputParser()
+    return chain.invoke({})
+
+
 @chain
 def process_question(input):
     question = input["question"]
-    # print(f"\n❓ Your Question: {question}\n")
 
-    # 1. Check predefined fast queries
-    query = predefined_query(question)
-    if query:
-        print(f"⚡ Using Predefined Query:\n{query}\n")
+    # 1. Check: ERP DB-related or general knowledge?
+    if is_internal_erp_question(question):
+        print(f"📦 Internal ERP question detected.")
+        
+        # a. Try predefined fast query
+        query = predefined_query(question)
+        if not query:
+            # b. Generate using LLM
+            query = chain_sql.invoke({"question": question}).strip()
+
+        # c. Validate
+        if not is_valid_sql(query):
+            return {"final_answer": "Maaf, terjadi kesalahan pada query SQL."}
+
+        # d. Run SQL
+        try:
+            result = db.run(query)
+            # Check if result is empty or None
+            if not result or result in [[], [(None,)], None]:
+                print("🔍 No internal data found. Using external knowledge fallback.")
+                external = llm.invoke(question)
+                return {
+                    "final_answer": (
+                        "📦 Maaf, tidak ada data dalam database Malitra yang ditemukan untuk pertanyaan tersebut.\n\n"
+                        f"🌍 Namun berikut adalah jawaban berdasarkan pengetahuan umum:\n\n{external}"
+                    )
+                }
+        except Exception as e:
+            print(f"❌ SQL Error: {e}")
+            external = llm.invoke(question)
+            return {
+                "final_answer": (
+                    "📦 Maaf, terjadi kesalahan saat mengambil data dari database Malitra.\n\n"
+                    f"🌍 Namun berikut adalah jawaban berdasarkan pengetahuan umum:\n\n{external}"
+                )
+            }
+
+        # 6. Summarize internal database answer
+        final_text = summarize_answer(question, str(result))
+
+        # 7. Tambah perbandingan jika itu comparative
+        if is_comparative_question(question):
+            location = extract_location_from_question(question)  # ← tambahkan lokasi
+            try:
+                comparison_text = compare_with_general_knowledge(final_text, question, location)
+                return {"final_answer": comparison_text}
+            except Exception as e:
+                return {
+                    "final_answer": f"{final_text}\n\n⚠️ Tapi terjadi kesalahan saat mencoba membandingkan: {e}"
+                }
+
+        return {"final_answer": final_text}
+    
     else:
-        # 2. If no match, use LLM generator
-        query = chain_sql.invoke({"question": question})
-        query = query.strip()
-        query = query.replace('`', '"').replace('‘', '"').replace('’', '"').replace('“', '"').replace('”', '"')
-        if "COUNT(*" in query and not "COUNT(*)" in query:
-            query = query.replace("COUNT(*", "COUNT(*)")
-        if "COUNT(* FROM" in query:
-            query = query.replace("COUNT(* FROM", "COUNT(*) FROM")
-
-        print(f"🛠️ Generated SQL Query:\n{query}\n")
-
-    # 3. Validate SQL
-    if not is_valid_sql(query):
-        print(f"❌ Invalid SQL syntax detected:\n{query}\n")
-        return {"final_answer": "Maaf, terjadi kesalahan pada query SQL."}
-
-    # 4. Execute SQL
-    try:
-        result = db.run(query)
-        print(f"✅ SQL Executed: {result}\n")
-    except Exception as e:
-        print(f"❌ SQL Error: {e}\n")
-        return {"final_answer": "Maaf, terjadi kesalahan saat mengambil data dari database."}
-
-    # 5. Summarize Final Answer
-    final_text = summarize_answer(question, str(result))
-    return {"final_answer": final_text}
+        print(f"🌍 General knowledge question detected. Using external LLM.")
+        answer = llm.invoke(question)
+        return {"final_answer": answer}
 
 # --- CLI Demo if running directly ---
 if __name__ == "__main__":
