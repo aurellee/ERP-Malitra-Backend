@@ -47,7 +47,7 @@ load_dotenv()
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 # Connect to DB
-db = SQLDatabase.from_uri("postgresql+psycopg2://postgres:250524@localhost:5432/erpmalitra")
+db = SQLDatabase.from_uri("postgresql+psycopg2://postgres:250524@localhost:5433/erpmalitra")
 
 # Setup LLM
 llm = ChatOllama(base_url="http://localhost:11434", model="gemma3:4b")

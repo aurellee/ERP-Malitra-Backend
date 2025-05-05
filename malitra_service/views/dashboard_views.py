@@ -29,7 +29,7 @@ class DashboardOverviewView(APIView):
         current_month = today.month
         current_year = today.year
 
-        categories = ["Sparepart Mobil", "Sparepart Motor", "Oli", "Aki", "Ban", "Campuran"]
+        categories = ["SpareParts Mobil", "SpareParts Motor", "Oli", "Aki", "Ban", "Campuran"]
         category_data = {}
 
         for category in categories:

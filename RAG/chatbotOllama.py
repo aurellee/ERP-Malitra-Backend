@@ -49,7 +49,7 @@ llm = ChatOllama(model='gemma3:4b', base_url='http://localhost:11434')
 
 from langchain_community.utilities import SQLDatabase
 
-db = SQLDatabase.from_uri("postgresql+psycopg2://postgres:250524@localhost:5432/erpmalitra")
+db = SQLDatabase.from_uri("postgresql+psycopg2://postgres:250524@localhost:5433/erpmalitra")
 
 db.dialect
 db.get_usable_table_names()

@@ -114,7 +114,7 @@ class InvoiceUpdate(generics.UpdateAPIView):
     serializer_class = InvoiceSerializer
     permission_classes = [AllowAny]
 
-    def get_object(self, serializer):
+    def get_object(self):
         inv_id = self.request.data.get('invoice_id')
         if not inv_id:
             raise serializers.ValidationError({"invoice_id":"Required"})

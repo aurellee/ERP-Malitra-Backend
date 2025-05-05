@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e90z0i(hn(s@g-+0xi@64y@#-$dgn37kvlzxy*)f$^xj8pv4+('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["malitra.co.id", "www.malitra.co.id"]
+ALLOWED_HOSTS = ["*"]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -103,7 +103,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': '250524',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
     }
 }
 
@@ -161,19 +161,12 @@ CELERY_BEAT_SCHEDULE = {
     'generate-daily-attendance-every-midnight': {
         'task': 'malitra_service.tasks.generate_daily_attendance',
         'schedule': crontab(hour=0, minute=0),
-    }
-    # 'check-and-generate-missing-attendance-every-hour': {
-    #     'task': 'malitra_service.tasks.check_and_generate_missing_attendance',
-    #     'schedule': crontab(minute='0', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'),
-    # }
-    # 'refresh-vectorstore-every-hour': {
-    #     'task': 'malitra_service.tasks.refresh_vectorstore_task',
-    #     'schedule': crontab(),
-    #     # 'schedule': crontab(minute=0, hour='*/1'),  # Every 1 hour
-    # },
+    },
+    'check-and-generate-missing-attendance-every-hour': {
+        'task': 'malitra_service.tasks.check_and_generate_missing_attendance',
+        'schedule': crontab(minute='0', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'),
+    },
 }
-
-# CELERY_TASK_ALWAYS_EAGER = True
 
 
 TIME_ZONE = 'Asia/Jakarta' 

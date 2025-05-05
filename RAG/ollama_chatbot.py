@@ -15,7 +15,7 @@ load_dotenv()
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 
 # --- Connect to Database ---
-db = SQLDatabase.from_uri("postgresql+psycopg2://postgres:250524@localhost:5432/erpmalitra")
+db = SQLDatabase.from_uri("postgresql+psycopg2://postgres:250524@localhost:5433/erpmalitra")
 
 # --- Chain Definitions ---
 @chain
